@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Purpose of Athletics – AISA Lions</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── MS Blue/Yellow team split ── */
+    .ms-team-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.1rem 0 .9rem;
+      text-align: left;
+    }
+    .ms-team {
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      font-size: .83rem;
+      line-height: 1.55;
+    }
+    .ms-team p { margin: .45rem 0 0; }
+    .ms-team-badge {
+      display: block;
+      font-weight: 800;
+      font-size: .85rem;
+      letter-spacing: .03em;
+      margin-bottom: .2rem;
+    }
+    .blue-team {
+      background: rgba(8,28,70,.7);
+      border: 2px solid rgba(120,180,255,.5);
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+    }
+    .yellow-team {
+      background: rgba(120,70,0,.75);
+      border: 2px solid rgba(255,185,0,.55);
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+    }
+    @media (max-width: 540px) {
+      .ms-team-split { grid-template-columns: 1fr; }
+    }
+
+    /* ── Lion Way strip ── */
+    .lion-way {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+    .lion-way-card {
+      border-radius: var(--radius);
+      padding: 1.6rem 1.4rem;
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+      border-top: 5px solid;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .lion-way-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .lion-way-card .lw-icon { font-size: 2rem; margin-bottom: .65rem; display: block; }
+    .lion-way-card h4 { font-size: 1.05rem; font-weight: 800; color: var(--navy); margin-bottom: .35rem; }
+    .lion-way-card p  { font-size: .88rem; color: var(--gray-600); line-height: 1.6; }
+    .lw-responsible { border-color: var(--navy); }
+    .lw-safe        { border-color: var(--spring); }
+    .lw-respectful  { border-color: var(--gold); }
+    .lw-kind        { border-color: var(--autumn); }
+
+    /* ── Wooden Pyramid callout ── */
+    .wooden-quote {
+      background: linear-gradient(135deg, #0d2b52, #1a4a8a);
+      color: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem 2.4rem;
+      margin: 2rem 0 0;
+      border-left: 6px solid var(--gold);
+    }
+    .wooden-quote p {
+      font-size: 1.05rem;
+      font-style: italic;
+      line-height: 1.65;
+      margin-bottom: .75rem;
+      opacity: .93;
+    }
+    .wooden-quote cite {
+      font-size: .82rem;
+      opacity: .72;
+      font-style: normal;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    /* ── Pillars beyond the field ── */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+    .pillar-card {
+      text-align: center;
+      padding: 1.8rem 1.2rem;
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .pillar-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .pillar-card .pillar-icon { font-size: 2.4rem; margin-bottom: .7rem; display: block; }
+    .pillar-card h4 { font-size: 1rem; font-weight: 800; color: var(--navy); margin-bottom: .35rem; }
+    .pillar-card p  { font-size: .85rem; color: var(--gray-600); line-height: 1.6; }
+
+    /* ── Wooden attributes strip ── */
+    .wooden-attrs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: 1rem;
+    }
+    .wooden-attr {
+      background: rgba(245,168,0,.12);
+      color: var(--navy);
+      border: 1.5px solid var(--gold);
+      border-radius: 2rem;
+      padding: .3rem .85rem;
+      font-size: .8rem;
+      font-weight: 700;
+    }
+
+    /* ── Wooden Pyramid of Success ── */
+    .pyramid-wrap {
+      background: linear-gradient(160deg, #0d2b52 0%, #102e5e 60%, #0a2040 100%);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 1.5rem 2rem;
+      margin: 2.5rem 0 0;
+    }
+    .pyramid-title {
+      text-align: center;
+      color: var(--gold);
+      font-size: 1.3rem;
+      font-weight: 900;
+      letter-spacing: .04em;
+      margin-bottom: .3rem;
+    }
+    .pyramid-sub {
+      text-align: center;
+      color: rgba(255,255,255,.65);
+      font-size: .8rem;
+      margin-bottom: 1.8rem;
+    }
+    .pyramid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .py-row {
+      display: flex;
+      gap: 5px;
+      width: 100%;
+    }
+    /* each row is progressively narrower via padding */
+    .py-row.row-1 { padding: 0 0%; }
+    .py-row.row-2 { padding: 0 5%; }
+    .py-row.row-3 { padding: 0 12%; }
+    .py-row.row-4 { padding: 0 20%; }
+    .py-row.row-5 { padding: 0 30%; }
+    .py-row.row-6 { padding: 0 38%; }
+    .py-block {
+      flex: 1;
+      border-radius: 7px;
+      padding: .55rem .4rem;
+      text-align: center;
+      font-size: .72rem;
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      cursor: default;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .py-block:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,.4); }
+
+    /* tier colours — bottom = darkest navy, top = gold */
+    .py-t1 { background: #0d2b52; color: #f5a800; border: 1.5px solid rgba(245,168,0,.4); }
+    .py-t2 { background: #12366a; color: #ffc14d; border: 1.5px solid rgba(245,168,0,.35); }
+    .py-t3 { background: #1a4480; color: #ffe08a; border: 1.5px solid rgba(245,168,0,.3); }
+    .py-t4 { background: #c08400; color: #fff; border: 1.5px solid rgba(255,255,255,.25); }
+    .py-t5 { background: #d4930d; color: #fff; border: 1.5px solid rgba(255,255,255,.3); }
+    .py-t6 { background: #f5a800; color: #0d2b52; border: 2px solid #fff; font-size: .8rem; }
+
+    .py-block .py-label { display: block; font-size: .62rem; opacity: .75; font-weight: 600; margin-top: .2rem; text-transform: none; }
+
+    .pyramid-legend {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: .45rem;
+      margin-top: 1.5rem;
+    }
+    .py-legend-item {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.8);
+      font-size: .68rem; font-weight: 600;
+      padding: .22rem .6rem; border-radius: 999px;
+      letter-spacing: .04em;
+    }
+    .py-legend-item.gold { background: rgba(245,168,0,.15); border-color: rgba(245,168,0,.35); color: #f5a800; }
+
+    @media (max-width: 600px) {
+      .py-block { font-size: .6rem; padding: .45rem .2rem; }
+      .py-row.row-5 { padding: 0 22%; }
+      .py-row.row-6 { padding: 0 30%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- AISA SITE HEADER -->
+  <header class="site-header">
+    <div class="top-bar">
+      <div class="top-bar-inner">
+        <img src="AISAOfficalLogo.png" alt="AISA – American International School of Abu Dhabi" class="official-logo" />
+        <span class="school-name">American International School of Abu Dhabi</span>
+        <span class="top-bar-tagline">Developing resilient learners and compassionate leaders for a dynamic world</span>
+      </div>
+    </div>
+    <nav class="main-nav" aria-label="Primary">
+      <div class="main-nav-inner">
+        <a href="index.html" class="lions-brand" aria-label="AISA Lions Athletics — Home">
+          <img src="GAAC%20Logos(WebsiteVersion)/AISA/AISALionsLogo%20%20copy.png" alt="AISA Lions Athletics" />
+        </a>
+        <input type="checkbox" id="nav-toggle-checkbox" />
+        <label for="nav-toggle-checkbox" class="nav-toggle" aria-label="Toggle navigation">☰</label>
+        <ul class="nav-links">
+          <li><a href="purpose.html" class="active">About &amp; Teams</a></li>
+          <li><a href="conferences.html">Conferences</a></li>
+          <li><a href="autumn.html">Autumn</a></li>
+          <li><a href="winter.html">Winter</a></li>
+          <li><a href="spring.html">Spring</a></li>
+          <li><a href="opportunities.html">Opportunities</a></li>
+          <li><a href="handbook.html">Handbook</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="index.html">Home</a><span>›</span> About &amp; Teams
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" style="padding: 3.5rem 1.5rem;">
+    <div class="hero-content">
+      <span class="hero-eyebrow">Mission &amp; Philosophy</span>
+      <h1>Purpose of <em>Athletics</em> at AISA</h1>
+      <p>At AISA, athletics is not a break from our mission — it <em style="color:var(--gold-light); font-style:normal; font-weight:700;">is</em> our mission in motion. Developing resilient learners and compassionate leaders for a dynamic world, one season at a time.</p>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section>
+    <div class="container">
+      <div class="section-label">Our Mission</div>
+      <h2 class="section-title">Why Athletics Matters at AISA</h2>
+      <p class="section-sub">The American International School Abu Dhabi exists to <strong>develop resilient learners and compassionate leaders for a dynamic world.</strong> Athletics is one of the most powerful environments that mission comes to life — nowhere else do students face challenge, failure, teamwork, and triumph in such rapid and real succession.</p>
+
+      <div class="values-grid">
+        <div class="value-item">
+          <span class="icon">🤝</span>
+          <h4>Teamwork</h4>
+          <p>The main ingredient of stardom is the rest of the team. Sport teaches students to collaborate, communicate, and trust — skills that matter far beyond the final score.</p>
+        </div>
+        <div class="value-item">
+          <span class="icon">💪</span>
+          <h4>Resilience</h4>
+          <p>Resilient learners are built on the practice field. Setbacks are not obstacles — they are the curriculum. Every loss, every re-try, shapes a stronger and more determined student-athlete.</p>
+        </div>
+        <div class="value-item">
+          <span class="icon">🏆</span>
+          <h4>Excellence</h4>
+          <p>Excellence at AISA is not about trophies — it is about the effort to become the best you are capable of being. We define success by preparation, growth, and character.</p>
+        </div>
+        <div class="value-item">
+          <span class="icon">🌍</span>
+          <h4>Global Citizenship</h4>
+          <p>Competing against peers from the UAE, Qatar, Kuwait, Bahrain, and Saudi Arabia turns every match into a lesson in cross-cultural respect and shared humanity.</p>
+        </div>
+        <div class="value-item">
+          <span class="icon">🎓</span>
+          <h4>Student-First</h4>
+          <p>Athletes are students who play sports — not the other way around. Academic growth and personal well-being are always the foundation on which athletic participation is built.</p>
+        </div>
+        <div class="value-item">
+          <span class="icon">⚖️</span>
+          <h4>Sportsmanship</h4>
+          <p>Compassionate leaders compete with integrity. We honor our opponents, respect officials, and uphold the spirit of the game — in victory and in defeat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE LION WAY -->
+  <section style="background: var(--off-white);">
+    <div class="container">
+      <div class="section-label">The Lion Way</div>
+      <h2 class="section-title">🦁 Be Responsible. Be Safe. Be Respectful. Be Kind.</h2>
+      <p class="section-sub">The Lion Way is the code that guides every AISA student-athlete — in practices, in competition, in travel, and in life. These four commitments are not rules imposed from outside; they are the character of a Lion, expressed through sport.</p>
+
+      <div class="lion-way">
+        <div class="lion-way-card lw-responsible">
+          <span class="lw-icon">🦁</span>
+          <h4>Be Responsible</h4>
+          <p>Show up prepared. Keep your academic commitments. Be accountable to your coaches and your teammates. Own your performance — the effort you bring to every practice is a choice you make for the whole team.</p>
+        </div>
+        <div class="lion-way-card lw-safe">
+          <span class="lw-icon">🛡️</span>
+          <h4>Be Safe</h4>
+          <p>Respect your body and the bodies of others. Follow safety protocols, play within the rules, and look out for your teammates. Physical well-being is the foundation of athletic development.</p>
+        </div>
+        <div class="lion-way-card lw-respectful">
+          <span class="lw-icon">🤝</span>
+          <h4>Be Respectful</h4>
+          <p>Honor your opponents, your officials, your coaches, and the game itself. Respect is not reserved for winners — it is the standard of a Lion at all times, regardless of the scoreboard.</p>
+        </div>
+        <div class="lion-way-card lw-kind">
+          <span class="lw-icon">❤️</span>
+          <h4>Be Kind</h4>
+          <p>Lead with compassion. Lift up the teammate who is struggling. Welcome the new player. Shake hands with genuine warmth. The most lasting victories are the friendships forged through sport.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEYOND THE FIELD -->
+  <section>
+    <div class="container">
+      <div class="section-label">More Than a Game</div>
+      <h2 class="section-title">What Athletics Builds Beyond the Field</h2>
+      <p class="section-sub">Athletics at AISA is intentionally designed to develop the whole student — not just the athlete. Each season, each practice, each tournament is an opportunity for academic growth, creative problem-solving, physical development, and the building of deep community.</p>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <span class="pillar-icon">📚</span>
+          <h4>Learning Beyond the Classroom</h4>
+          <p>Sport extends academic growth into physical and emotional domains. Athletes learn strategy, discipline, time management, and how to perform under pressure — skills that transfer directly into the classroom and beyond.</p>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-icon">🤝</span>
+          <h4>A Community of Belonging</h4>
+          <p>Teams create communities. Student-athletes build lasting friendships, develop empathy through shared challenge, and strengthen their sense of belonging — both to AISA and to the broader international school community.</p>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-icon">🌍</span>
+          <h4>Growing Global Citizens</h4>
+          <p>Competing across the UAE and throughout the Gulf region exposes our athletes to diverse cultures, perspectives, and ways of being. Collaboration, leadership, and intercultural understanding are forged on the courts and fields of GAAC, ISAC, EAC, and JEAC.</p>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-icon">🌿</span>
+          <h4>Physical &amp; Personal Well-being</h4>
+          <p>Regular physical activity supports mental health, focus, and resilience. AISA Athletics provides every student — from Grade 4 to Grade 12 — a structured, supportive, and joyful environment to grow physically and personally.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section style="background: var(--off-white);">
+    <div class="container">
+      <div class="section-label">Coaching Philosophy</div>
+      <h2 class="section-title">Our Guiding Philosophy</h2>
+      <p class="section-sub">AISA Athletics draws on a rich tradition of character-based coaching — most deeply rooted in the philosophy of legendary UCLA coach <strong>John Wooden</strong>, whose Pyramid of Success placed character, effort, and team above individual achievement and winning.</p>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-accent" style="background: var(--navy);"></div>
+          <div class="card-body">
+            <span class="card-icon">📚</span>
+            <h3>Academics First</h3>
+            <p>Student-athletes at AISA are expected to maintain strong academic standing. Participation in athletics is a privilege contingent on meeting academic requirements. Our coaches and Athletic Director work closely with teachers to monitor progress and provide support. A student who struggles in the classroom receives help before they take the field.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-accent" style="background: var(--gold);"></div>
+          <div class="card-body">
+            <span class="card-icon">🏛️</span>
+            <h3>The Wooden Standard</h3>
+            <p>John Wooden defined success not as winning, but as <em>"peace of mind, which is a direct result of self-satisfaction in knowing you made the effort to become the best of which you are capable."</em> AISA coaches are trained to hold this standard — to measure athletes by effort, preparation, and character, and to never mistake activity for achievement.</p>
+            <div class="wooden-attrs">
+              <span class="wooden-attr">Character</span>
+              <span class="wooden-attr">Preparation</span>
+              <span class="wooden-attr">Industriousness</span>
+              <span class="wooden-attr">Enthusiasm</span>
+              <span class="wooden-attr">Team Spirit</span>
+              <span class="wooden-attr">Competitive Greatness</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-accent" style="background: var(--spring);"></div>
+          <div class="card-body">
+            <span class="card-icon">🌱</span>
+            <h3>Development Over Winning</h3>
+            <p>While we compete to win, our primary goal is the holistic development of every student-athlete. As Wooden taught, <em>"It's what you learn after you know it all that counts."</em> Coaches prioritize growth, equitable playing time at developmental levels, and the kind of positive experience that keeps students engaged in sport for life — not just one season.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-accent" style="background: var(--winter);"></div>
+          <div class="card-body">
+            <span class="card-icon">🌐</span>
+            <h3>International Perspective</h3>
+            <p>Competing across four conferences — JEAC (Elementary), EAC (UAE Middle School), ISAC (Abu Dhabi local, MS/JV/V), and GAAC (Gulf regional, Varsity) — means AISA student-athletes engage with peers from Abu Dhabi, Dubai, Qatar, Kuwait, Bahrain, and Saudi Arabia. Every away tournament is a lesson in intercultural leadership.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wooden callout -->
+      <div class="wooden-quote">
+        <p>"Be more concerned with your character than your reputation, because your character is what you really are, while your reputation is merely what others think you are. The true test of a man's character is what he does when no one is watching."</p>
+        <cite>— John Wooden, Coach · UCLA · 10× National Champion</cite>
+      </div>
+
+      <!-- Wooden Pyramid of Success -->
+      <div class="pyramid-wrap">
+        <div class="pyramid-title">Wooden's Pyramid of Success</div>
+        <div class="pyramid-sub">The 15 building blocks that form the foundation of every AISA Lions coach's philosophy</div>
+        <div class="pyramid">
+
+          <!-- Row 1 — Foundation (widest) -->
+          <div class="py-row row-1">
+            <div class="py-block py-t1">
+              Industriousness
+              <span class="py-label">Work hard every day</span>
+            </div>
+            <div class="py-block py-t1">
+              Enthusiasm
+              <span class="py-label">Bring joy to the work</span>
+            </div>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="py-row row-2">
+            <div class="py-block py-t2">
+              Friendship
+              <span class="py-label">Build bonds</span>
+            </div>
+            <div class="py-block py-t2">
+              Loyalty
+              <span class="py-label">To team &amp; school</span>
+            </div>
+            <div class="py-block py-t2">
+              Cooperation
+              <span class="py-label">Work together</span>
+            </div>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="py-row row-3">
+            <div class="py-block py-t2">
+              Self-Control
+              <span class="py-label">Discipline</span>
+            </div>
+            <div class="py-block py-t2">
+              Alertness
+              <span class="py-label">Stay sharp</span>
+            </div>
+            <div class="py-block py-t2">
+              Initiative
+              <span class="py-label">Take action</span>
+            </div>
+            <div class="py-block py-t2">
+              Intentness
+              <span class="py-label">Persist &amp; focus</span>
+            </div>
+          </div>
+
+          <!-- Row 4 -->
+          <div class="py-row row-4">
+            <div class="py-block py-t3">
+              Condition
+              <span class="py-label">Mind, body, spirit</span>
+            </div>
+            <div class="py-block py-t3">
+              Skill
+              <span class="py-label">Master your craft</span>
+            </div>
+            <div class="py-block py-t3">
+              Team Spirit
+              <span class="py-label">Sacrifice for others</span>
+            </div>
+          </div>
+
+          <!-- Row 5 -->
+          <div class="py-row row-5">
+            <div class="py-block py-t4">
+              Poise
+              <span class="py-label">Be yourself</span>
+            </div>
+            <div class="py-block py-t4">
+              Confidence
+              <span class="py-label">Earned, not given</span>
+            </div>
+          </div>
+
+          <!-- Apex -->
+          <div class="py-row row-6">
+            <div class="py-block py-t6">
+              Competitive Greatness
+              <span class="py-label" style="color:#0d2b52; opacity:.8;">Your very best when it matters most</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Mortar values legend -->
+        <div class="pyramid-legend">
+          <span class="py-legend-item gold">Mortar Values:</span>
+          <span class="py-legend-item">Ambition</span>
+          <span class="py-legend-item">Adaptability</span>
+          <span class="py-legend-item">Resourcefulness</span>
+          <span class="py-legend-item">Fight</span>
+          <span class="py-legend-item">Faith</span>
+          <span class="py-legend-item">Patience</span>
+          <span class="py-legend-item">Reliability</span>
+          <span class="py-legend-item">Integrity</span>
+          <span class="py-legend-item">Honesty</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TEAM LEVELS -->
+  <section id="teams">
+    <div class="container">
+      <div class="section-label">Team Structure</div>
+      <h2 class="section-title">Team Levels at AISA</h2>
+      <p class="section-sub">AISA Athletics organizes teams into four competitive levels. Middle School teams are divided into <strong>Blue</strong> (competition) and <strong>Yellow</strong> (development) squads. At the Elementary level, all JEAC teams are proudly known as the <strong>CUBS — our Young Lions</strong>.</p>
+
+      <div class="level-grid">
+
+        <div class="level-card level-varsity">
+          <div class="level-icon">🏆</div>
+          <h3>Varsity</h3>
+          <p>The highest level of competition at AISA. Varsity teams represent the school at the GAAC regional championships across the UAE, Qatar, Kuwait, Bahrain, and Saudi Arabia, and play full ISAC league seasons in Abu Dhabi. Varsity athletes are held to the highest standards of performance, commitment, and sportsmanship.</p>
+          <br>
+          <small style="opacity:.75;">Grades 9–12 · GAAC + ISAC · International travel</small>
+        </div>
+
+        <div class="level-card level-jv">
+          <div class="level-icon">📈</div>
+          <h3>Junior Varsity (JV)</h3>
+          <p>JV teams compete in ISAC league play, providing a strong bridge between Middle School and Varsity competition. JV emphasizes skill development, increased playing time for all athletes, and preparation for the demands of Varsity-level sport. JV athletes must be under 16 before September 1 of the academic year.</p>
+          <br>
+          <small style="opacity:.75;">Under-16 · ISAC · Development focus</small>
+        </div>
+
+        <div class="level-card level-ms">
+          <div class="level-icon">🌱</div>
+          <h3>Middle School (MS)</h3>
+          <p>Middle School athletics introduce students in Grades 6–8 to competitive sport. AISA MS teams are organized into two distinct squads — <strong>Blue</strong> and <strong>Yellow</strong> — to match the right level of competition to every athlete's development stage.</p>
+          <div class="ms-team-split">
+            <div class="ms-team blue-team">
+              <span class="ms-team-badge">🔵 Blue Team</span>
+              <p>Competition-focused for more skilled and experienced athletes. Blue teams represent AISA in the <strong>EAC</strong> (Emirates Athletics Conference — 6-school UAE league) and <strong>ISAC</strong> (Abu Dhabi local league).</p>
+            </div>
+            <div class="ms-team yellow-team">
+              <span class="ms-team-badge">🟡 Yellow Team</span>
+              <p>Development-focused for athletes who are newer to the sport or still building their skills. Yellow teams compete in <strong>DEAC</strong> (Development Emirates Athletics Conference), a lower-pressure environment designed for growth.</p>
+            </div>
+          </div>
+          <small style="opacity:.75;">Grades 6–8 · Blue: EAC + ISAC · Yellow: DEAC</small>
+        </div>
+
+        <div class="level-card level-ms" style="background: linear-gradient(135deg, #8a4a00, #e08a00);">
+          <div class="level-icon">🦁</div>
+          <h3>CUBS Teams — Young Lions</h3>
+          <p>At AISA, all of our JEAC (Junior Emirates Athletics Conference) teams are known as the <strong>CUBS</strong> — our Young Lions. The CUBS program welcomes students in Grades 4–6 to organized sport for the first time, with an emphasis on fun, fundamentals, and the Lion Way. JEAC events are jamborees — <strong>no individual or team awards</strong> — so every Cub can compete free from pressure and grow their love of sport.</p>
+          <br>
+          <small style="opacity:.75;">Grades 4–6 · JEAC Jamborees · Participation-first · 🦁 Young Lions</small>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ELIGIBILITY -->
+  <section style="background: var(--off-white);">
+    <div class="container">
+      <div class="section-label">Eligibility</div>
+      <h2 class="section-title">Participation Requirements</h2>
+      <p class="section-sub">All AISA student-athletes must meet the following requirements to participate in the athletics program each season.</p>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-accent" style="background: var(--navy);"></div>
+          <div class="card-body">
+            <span class="card-icon">📋</span>
+            <h3>Academic Standing</h3>
+            <p>Athletes must maintain a minimum GPA set by AISA administration. Students on academic probation may be restricted from travel or competition until standards are met.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-accent" style="background: var(--gold);"></div>
+          <div class="card-body">
+            <span class="card-icon">🩺</span>
+            <h3>Physical &amp; Medical Clearance</h3>
+            <p>A current annual physical examination is required before the first practice of each school year. Medical clearance forms must be on file with the Athletics Office.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-accent" style="background: var(--spring);"></div>
+          <div class="card-body">
+            <span class="card-icon">✍️</span>
+            <h3>Parent / Guardian Consent</h3>
+            <p>Signed consent forms are required from a parent or guardian for each season. Travel permission slips are additionally required for any away games or tournaments.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-accent" style="background: var(--autumn);"></div>
+          <div class="card-body">
+            <span class="card-icon">💳</span>
+            <h3>Athletics Fee</h3>
+            <p>A per-season participation fee covers uniforms, equipment, and transportation. Financial assistance is available — contact the Athletics Office for details.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALLOUT -->
+  <section style="padding-top: 2rem; padding-bottom: 3rem;">
+    <div class="container">
+      <div class="callout">
+        <p>"Success is peace of mind, which is a direct result of self-satisfaction in knowing you made the effort to become the best of which you are capable."</p>
+        <cite>— John Wooden · The standard every AISA Lion strives for</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <strong>AISA Lions Athletics</strong> — American International School of Abu Dhabi<br>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="purpose.html">About &amp; Teams</a>
+      <a href="conferences.html">Conferences</a>
+      <a href="autumn.html">Autumn</a>
+      <a href="winter.html">Winter</a>
+      <a href="spring.html">Spring</a>
+      <a href="opportunities.html">Opportunities</a>
+      <a href="handbook.html">Handbook</a>
+    </div>
+  </footer>
+
+  <script src="leo.js" defer></script>
+</body>
+</html>
