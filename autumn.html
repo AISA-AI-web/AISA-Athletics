@@ -10,7 +10,6 @@
     .sport-card-header.swimming   { background: linear-gradient(135deg, #0d5c8a, #1abc9c); }
     .sport-card-header.soccer-jeac{ background: linear-gradient(135deg, #1a5276, #2980b9); }
     .sport-card-header.leadership { background: linear-gradient(135deg, #4a235a, #8e44ad); }
-    .sport-card-header.football   { background: linear-gradient(135deg, #92400e, #c0392b); }
 
     /* ── Schedule Button ── */
     .btn-schedule {
@@ -363,17 +362,17 @@
           </div>
         </div>
 
-        <!-- JEAC SOCCER -->
+        <!-- CUBS SOCCER -->
         <div class="sport-card">
           <div class="sport-card-header soccer-jeac">
             <div class="sport-emoji">⚽</div>
             <div>
-              <h3>JEAC Soccer</h3>
+              <h3>Cubs Soccer</h3>
               <span>Elementary · Grades 4-6</span>
             </div>
           </div>
           <div class="sport-card-body">
-            <p>Junior Emirates Athletics Conference Soccer is the Autumn jamboree event for AISA's elementary student-athletes. Played 7-a-side on a quarter-field with no offside rule and unlimited substitutions, the focus at this level is fun, skill development, and equal playing time for every athlete.</p>
+            <p>Cubs Soccer is the Autumn jamboree event for AISA's elementary student-athletes, run through the Junior Emirates Athletics Conference (JEAC). Played 7-a-side on a quarter-field with no offside rule and unlimited substitutions, weekly practices build fundamentals throughout September and October, with the focus on fun, skill development, and equal playing time for every athlete, culminating in the JEAC Final Matches against regional schools.</p>
             <div class="team-badges">
               <span class="badge badge-ms">Grades 4-5 Mixed</span>
               <span class="badge badge-ms">Grade 6 Boys</span>
@@ -381,30 +380,8 @@
             </div>
             <br>
             <small style="color:var(--gray-600);">Conference: JEAC (Jamboree, no awards)</small>
-          </div>
-        </div>
-
-        <!-- CUBS FOOTBALL -->
-        <div class="sport-card">
-          <div class="sport-card-header football">
-            <div class="sport-emoji">🏈</div>
-            <div>
-              <h3>Cubs Football</h3>
-              <span>Elementary · Grades 4-6</span>
-            </div>
-          </div>
-          <div class="sport-card-body">
-            <p>Cubs Football is AISA's flag football program for elementary student-athletes. Weekly practices on the Football Pitch build fundamentals throughout September and October, culminating in the JEAC Final Matches with AISA's Grade 4-6 boys and girls teams facing off against regional schools.</p>
-            <div class="team-badges">
-              <span class="badge badge-ms">Grade 4-6 Girls</span>
-              <span class="badge badge-ms">Grade 4 Boys</span>
-              <span class="badge badge-ms">Grade 5 Boys</span>
-              <span class="badge badge-ms">Grade 6 Boys</span>
-            </div>
-            <br>
-            <small style="color:var(--gray-600);">Conference: JEAC (Final Matches Jamboree)</small>
             <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem;">
-              <button class="btn-schedule" style="background:#92400e;color:#fff;" onclick="document.getElementById('cubs-football-modal').classList.add('open')">📅 Cubs Football Schedule</button>
+              <button class="btn-schedule" style="background:#1a5276;color:#fff;" onclick="document.getElementById('cubs-soccer-modal').classList.add('open')">📅 Cubs Soccer Schedule</button>
             </div>
           </div>
         </div>
@@ -1205,14 +1182,14 @@
   </div><!-- /#ms-yellow-vb-modal -->
 
   <!-- ═══════════════ CUBS FOOTBALL MODAL ═══════════════ -->
-  <div id="cubs-football-modal" class="sched-modal">
+  <div id="cubs-soccer-modal" class="sched-modal">
     <div class="sched-inner">
       <div class="sched-header" style="background: linear-gradient(135deg, #92400e, #c0392b);">
         <div>
-          <h2>🏈 Cubs Football</h2>
+          <h2>⚽ Cubs Soccer</h2>
           <p>2026–2027 · Grades 4–6 · Wednesday Practices &amp; JEAC Final Matches</p>
         </div>
-        <button class="sched-close" onclick="document.getElementById('cubs-football-modal').classList.remove('open')" aria-label="Close">✕</button>
+        <button class="sched-close" onclick="document.getElementById('cubs-soccer-modal').classList.remove('open')" aria-label="Close">✕</button>
       </div>
 
       <div class="cal-legend">
@@ -1240,13 +1217,13 @@
           <div class="cal-day reg" title="Last Day of Registration · Online · Grades 4-6">8<span>Reg<br>Closes</span></div>
           <div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day">11</div><div class="cal-day">12</div>
           <div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div>
-          <div class="cal-day prac" title="Week 1 Practice · Football Pitch · Everyone · 3:00–4:30 PM">16<span>Practice</span></div>
+          <div class="cal-day prac" title="Week 1 Practice · Soccer Pitch · Everyone · 3:00–4:30 PM">16<span>Practice</span></div>
           <div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day">19</div>
           <div class="cal-day">20</div><div class="cal-day">21</div><div class="cal-day">22</div>
-          <div class="cal-day prac" title="Week 2 Practice · Football Pitch · Everyone · 3:00–4:30 PM">23<span>Practice</span></div>
+          <div class="cal-day prac" title="Week 2 Practice · Soccer Pitch · Everyone · 3:00–4:30 PM">23<span>Practice</span></div>
           <div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div>
           <div class="cal-day">27</div><div class="cal-day">28</div><div class="cal-day">29</div>
-          <div class="cal-day prac" title="Week 3 Practice · Football Pitch · Everyone · 3:00–4:30 PM">30<span>Practice</span></div>
+          <div class="cal-day prac" title="Week 3 Practice · Soccer Pitch · Everyone · 3:00–4:30 PM">30<span>Practice</span></div>
           <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
         </div>
       </div>
@@ -1259,16 +1236,16 @@
           <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
           <div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div>
           <div class="cal-day">4</div><div class="cal-day">5</div><div class="cal-day">6</div>
-          <div class="cal-day prac" title="Week 4 Practice · Football Pitch · Everyone · 3:00–4:00 PM">7<span>Practice</span></div>
+          <div class="cal-day prac" title="Week 4 Practice · Soccer Pitch · Everyone · 3:00–4:00 PM">7<span>Practice</span></div>
           <div class="cal-day">8</div><div class="cal-day">9</div>
           <div class="cal-day brk">10</div><div class="cal-day brk">11</div><div class="cal-day brk">12</div><div class="cal-day brk">13</div><div class="cal-day brk">14</div><div class="cal-day brk">15</div><div class="cal-day brk">16</div>
           <div class="cal-day brk">17</div><div class="cal-day brk">18</div>
           <div class="cal-day">19</div><div class="cal-day">20</div>
-          <div class="cal-day prac" title="Week 5 Practice · Football Pitch · Everyone · 3:00–4:00 PM">21<span>Practice</span></div>
+          <div class="cal-day prac" title="Week 5 Practice · Soccer Pitch · Everyone · 3:00–4:00 PM">21<span>Practice</span></div>
           <div class="cal-day">22</div><div class="cal-day">23</div>
           <div class="cal-day game-jeac" onclick="showCubsGamePopup('Oct 24','JEAC Final Matches (3-5 Matches) · Schedule TBC','Grade 4-6 Girls @ DAA — TBD vs TBD','Grade 4 Boys @ DAS — TBD vs TBD','Grade 5 Boys @ ACS — TBD vs TBD','Grade 6 Boys @ GAA — TBD vs TBD','Schools attending: GAA · ACS · AISA · ASD · DAA · DAS')">24<span>JEAC<br>FINALS</span></div>
           <div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day">27</div>
-          <div class="cal-day prac" title="Week 6 Practice · Football Pitch · Everyone · 3:00–4:00 PM">28<span>Practice</span></div>
+          <div class="cal-day prac" title="Week 6 Practice · Soccer Pitch · Everyone · 3:00–4:00 PM">28<span>Practice</span></div>
           <div class="cal-day">29</div><div class="cal-day">30</div><div class="cal-day">31</div>
         </div>
         <p class="cal-break-note">🍂 Autumn Break — Oct 10 through Oct 18. No practices.</p>
@@ -1280,10 +1257,10 @@
         <div class="cal-grid">
           <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
           <div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div>
-          <div class="cal-day prac" title="Week 7 Practice · Football Pitch · Everyone · 3:00–4:00 PM">4<span>Practice</span></div>
+          <div class="cal-day prac" title="Week 7 Practice · Soccer Pitch · Everyone · 3:00–4:00 PM">4<span>Practice</span></div>
           <div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day">7</div>
           <div class="cal-day">8</div><div class="cal-day">9</div><div class="cal-day">10</div>
-          <div class="cal-day prac" title="Week 8 Practice · Football Pitch · Everyone · 3:00–4:00 PM">11<span>Practice</span></div>
+          <div class="cal-day prac" title="Week 8 Practice · Soccer Pitch · Everyone · 3:00–4:00 PM">11<span>Practice</span></div>
           <div class="cal-day">12</div><div class="cal-day">13</div><div class="cal-day">14</div>
           <div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day">17</div><div class="cal-day">18</div>
           <div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div>
@@ -1292,13 +1269,13 @@
           <div class="cal-day">29</div><div class="cal-day">30</div>
           <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
         </div>
-        <p class="cal-break-note">🏈 Season concludes after Week 8 (Nov 11) practice.</p>
+        <p class="cal-break-note">⚽ Season concludes after Week 8 (Nov 11) practice.</p>
       </div>
 
       <!-- Game Detail Popup -->
       <div id="cubs-game-popup" class="game-popup">
         <button class="game-popup-close" onclick="document.getElementById('cubs-game-popup').classList.remove('visible')" aria-label="Close">✕ close</button>
-        <div class="game-popup-title">🏈 <span id="cubs-gp-title"></span></div>
+        <div class="game-popup-title">⚽ <span id="cubs-gp-title"></span></div>
         <div class="game-popup-rows">
           <div class="game-popup-row">👧 <strong>G4-6:</strong> <span id="cubs-gp-g46"></span></div>
           <div class="game-popup-row">👦 <strong>G4:</strong> <span id="cubs-gp-g4"></span></div>
@@ -1330,11 +1307,11 @@
 
       <!-- Footer -->
       <div class="sched-footer">
-        <a href="schedules/Cubs_Football_2026-27.pdf" class="btn-schedule" download style="text-decoration:none;background:#92400e;color:#fff;">📄 Download Full Schedule PDF</a>
+        <a href="schedules/Cubs_Football_2026-27.pdf" class="btn-schedule" download style="text-decoration:none;background:#1a5276;color:#fff;">📄 Download Full Schedule PDF</a>
       </div>
 
     </div>
-  </div><!-- /#cubs-football-modal -->
+  </div><!-- /#cubs-soccer-modal -->
 
   <!-- ═══════════════ HS SWIMMING MODAL ═══════════════ -->
   <div id="hs-swim-modal" class="sched-modal">
@@ -1883,7 +1860,7 @@
       ['cubs-sep','cubs-oct','cubs-nov'].forEach(function(m) {
         document.getElementById(m).style.display = m === month ? '' : 'none';
       });
-      document.querySelectorAll('#cubs-football-modal .cal-tab').forEach(function(t) { t.classList.remove('active'); });
+      document.querySelectorAll('#cubs-soccer-modal .cal-tab').forEach(function(t) { t.classList.remove('active'); });
       btn.classList.add('active');
       document.getElementById('cubs-game-popup').classList.remove('visible');
     }
@@ -1946,14 +1923,14 @@
       p.classList.add('visible');
       p.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
-    ['hs-boys-vb-modal','hs-girls-vb-modal','ms-blue-vb-modal','ms-yellow-vb-modal','cubs-football-modal','hs-swim-modal','ms-swim-modal','cubs-swim-modal'].forEach(function(id) {
+    ['hs-boys-vb-modal','hs-girls-vb-modal','ms-blue-vb-modal','ms-yellow-vb-modal','cubs-soccer-modal','hs-swim-modal','ms-swim-modal','cubs-swim-modal'].forEach(function(id) {
       document.getElementById(id).addEventListener('click', function(e) {
         if (e.target === this) this.classList.remove('open');
       });
     });
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
-        ['hs-boys-vb-modal','hs-girls-vb-modal','ms-blue-vb-modal','ms-yellow-vb-modal','cubs-football-modal','hs-swim-modal','ms-swim-modal','cubs-swim-modal'].forEach(function(id) {
+        ['hs-boys-vb-modal','hs-girls-vb-modal','ms-blue-vb-modal','ms-yellow-vb-modal','cubs-soccer-modal','hs-swim-modal','ms-swim-modal','cubs-swim-modal'].forEach(function(id) {
           document.getElementById(id).classList.remove('open');
         });
       }

@@ -194,12 +194,12 @@
     wrap.id = 'leo-widget';
     wrap.innerHTML = `
       <button id="leo-toggle" aria-label="Open Leo, the AISA Athletics chat assistant" type="button">
-        <span class="leo-emoji">🦁</span>
+        <img class="leo-emoji" src="leo-lion.svg" alt="" aria-hidden="true">
         <span class="leo-toggle-text">Ask Leo</span>
       </button>
       <section id="leo-panel" class="leo-hidden" role="dialog" aria-label="Leo chat">
         <header class="leo-header">
-          <span class="leo-emoji leo-avatar" aria-hidden="true">🦁</span>
+          <img class="leo-emoji leo-avatar" src="leo-lion.svg" alt="" aria-hidden="true">
           <div class="leo-title">
             <strong>Leo</strong>
             <small>AISA Lions Assistant · Online</small>
@@ -230,7 +230,7 @@
       const div = document.createElement('div');
       div.className = 'leo-msg leo-msg-' + who;
       if (who === 'bot') {
-        div.innerHTML = '<span class="leo-emoji leo-msg-avatar">🦁</span><span class="leo-msg-text">' + html + '</span>';
+        div.innerHTML = '<img class="leo-emoji leo-msg-avatar" src="leo-lion.svg" alt=""><span class="leo-msg-text">' + html + '</span>';
       } else {
         div.innerHTML = '<span class="leo-msg-text">' + escape(html) + '</span>';
       }

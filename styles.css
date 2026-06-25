@@ -600,13 +600,13 @@ footer .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex
 }
 #leo-toggle:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.3); }
 #leo-toggle .leo-emoji {
-  font-size: 1.6rem;
   background: var(--white);
   border-radius: 50%;
   width: 36px; height: 36px;
+  padding: 3px;
   display: inline-flex; align-items: center; justify-content: center;
   box-shadow: inset 0 0 0 2px var(--navy-dark);
-  line-height: 1;
+  object-fit: contain;
 }
 #leo-toggle.leo-active .leo-toggle-text { display: none; }
 #leo-toggle.leo-active { padding: .35rem; }
@@ -637,13 +637,14 @@ footer .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex
   border-bottom: 3px solid var(--gold);
 }
 .leo-avatar {
-  font-size: 1.7rem;
   background: var(--gold);
   border-radius: 50%;
   width: 42px; height: 42px;
+  padding: 4px;
   display: inline-flex; align-items: center; justify-content: center;
   flex-shrink: 0;
   box-shadow: 0 0 0 2px var(--white);
+  object-fit: contain;
 }
 .leo-title { flex: 1; line-height: 1.15; }
 .leo-title strong { display: block; font-size: 1.05rem; color: var(--gold); }
@@ -674,11 +675,13 @@ footer .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex
 .leo-msg-bot  { align-self: flex-start; }
 .leo-msg-user { align-self: flex-end; flex-direction: row-reverse; }
 .leo-msg-avatar {
-  font-size: 1.1rem; flex-shrink: 0;
+  flex-shrink: 0;
   background: var(--gold); border-radius: 50%;
   width: 28px; height: 28px;
+  padding: 3px;
   display: inline-flex; align-items: center; justify-content: center;
   align-self: flex-end;
+  object-fit: contain;
 }
 .leo-msg-text {
   background: var(--white);
