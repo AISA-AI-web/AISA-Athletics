@@ -413,6 +413,9 @@
             </div>
             <br>
             <small style="color:var(--gray-600);">Conference: JEAC (Jamboree, no awards)</small>
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem;">
+              <button class="btn-schedule" style="background:#6c1a6c;color:#fff;" onclick="document.getElementById('cubs-tf-modal').classList.add('open')">📅 Cubs Track &amp; Field Schedule</button>
+            </div>
           </div>
         </div>
 
@@ -2298,6 +2301,214 @@
 
     </div><!-- /.sched-inner -->
   </div><!-- /#ms-yellow-fb-modal -->
+
+  <div id="cubs-tf-modal" class="sched-modal" role="dialog" aria-modal="true" aria-label="Cubs Track & Field Schedule">
+    <div class="sched-inner">
+
+      <!-- Header -->
+      <div class="sched-header">
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <span style="font-size:1.8rem;line-height:1;">🏃</span>
+          <div>
+            <h2>Cubs Track &amp; Field</h2>
+            <p>2026–2027 · JEAC (Jamboree, Grades 4-6)</p>
+          </div>
+        </div>
+        <button class="sched-close" onclick="document.getElementById('cubs-tf-modal').classList.remove('open')" aria-label="Close">✕</button>
+      </div>
+
+      <!-- Legend -->
+      <div class="cal-legend">
+        <span><span class="cal-dot reg"></span>Registration</span>
+        <span><span class="cal-dot prac"></span>Practice (Everyone)</span>
+        <span><span class="cal-dot game-gaac"></span>JEAC Meet</span>
+        <span><span class="cal-dot brk"></span>Winter Break</span>
+      </div>
+
+      <!-- Month Tabs -->
+      <div class="cal-tabs" role="tablist">
+        <button class="cal-tab active" role="tab" onclick="showCTFMonth('ctf-nov',this)">🍂 Nov 2026</button>
+        <button class="cal-tab" role="tab" onclick="showCTFMonth('ctf-dec',this)">❄️ Dec 2026</button>
+        <button class="cal-tab" role="tab" onclick="showCTFMonth('ctf-jan',this)">🏃 Jan 2027</button>
+        <button class="cal-tab" role="tab" onclick="showCTFMonth('ctf-feb',this)">🏃 Feb 2027</button>
+        <button class="cal-tab" role="tab" onclick="showCTFMonth('ctf-may',this)">🏆 May 2027</button>
+      </div>
+
+      <!-- NOVEMBER 2026 -->
+      <div id="ctf-nov" class="cal-month">
+        <div class="cal-month-title">November 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-day">1</div>
+          <div class="cal-day reg" title="1st Day of Registration (Spring ASA Registration) · Online · Grades 4-6">2<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration · Online · Grades 4-6">3<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration · Online · Grades 4-6">4<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration · Online · Grades 4-6">5<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration · Online · Grades 4-6">6<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration · Online · Grades 4-6">7<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration · Online · Grades 4-6">8<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration · Online · Grades 4-6">9<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration · Online · Grades 4-6">10<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration · Online · Grades 4-6">11<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration · Online · Grades 4-6">12<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration · Online · Grades 4-6">13<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration · Online · Grades 4-6">14<span>Reg</span></div>
+          <div class="cal-day reg" title="Last Day of Registration (Spring ASA Registration) · Online · Grades 4-6">15<span>Reg</span></div>
+          <div class="cal-day">16</div><div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div><div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div>
+          <div class="cal-day prac" title="Practice — Everyone · Big Pitch · 3:00–4:00 PM" onclick="showCTFGamePopup('Nov 25','Practice','Everyone · Big Pitch · 3:00–4:00 PM')">25<span>Practice</span></div>
+          <div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+      </div>
+
+      <!-- DECEMBER 2026 -->
+      <div id="ctf-dec" class="cal-month" style="display:none;">
+        <div class="cal-month-title">December 2026</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div>
+          <div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day">4</div><div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day">7</div><div class="cal-day">8</div>
+          <div class="cal-day prac" title="Practice — Everyone · Big Pitch · 3:00–4:00 PM" onclick="showCTFGamePopup('Dec 9','Practice','Everyone · Big Pitch · 3:00–4:00 PM')">9<span>Practice</span></div>
+          <div class="cal-day">10</div><div class="cal-day">11</div>
+          <div class="cal-day brk">12</div>
+          <div class="cal-day brk">13</div><div class="cal-day brk">14</div><div class="cal-day brk">15</div><div class="cal-day brk">16</div><div class="cal-day brk">17</div><div class="cal-day brk">18</div><div class="cal-day brk">19</div>
+          <div class="cal-day brk">20</div><div class="cal-day brk">21</div><div class="cal-day brk">22</div><div class="cal-day brk">23</div><div class="cal-day brk">24</div><div class="cal-day brk">25</div><div class="cal-day brk">26</div>
+          <div class="cal-day brk">27</div><div class="cal-day brk">28</div><div class="cal-day brk">29</div><div class="cal-day brk">30</div><div class="cal-day brk">31</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+        <p class="cal-break-note">❄️ Winter Break — Dec 12 through Jan 3. No games or practices.</p>
+      </div>
+
+      <!-- JANUARY 2027 -->
+      <div id="ctf-jan" class="cal-month" style="display:none;">
+        <div class="cal-month-title">January 2027</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+          <div class="cal-day brk">1</div><div class="cal-day brk">2</div>
+          <div class="cal-day brk">3</div><div class="cal-day">4</div><div class="cal-day">5</div>
+          <div class="cal-day prac" title="Practice — Everyone · Big Pitch · 3:00–4:00 PM" onclick="showCTFGamePopup('Jan 6','Practice','Everyone · Big Pitch · 3:00–4:00 PM')">6<span>Practice</span></div>
+          <div class="cal-day">7</div><div class="cal-day">8</div><div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day">11</div><div class="cal-day">12</div>
+          <div class="cal-day prac" title="Practice — Everyone · Big Pitch · 3:00–4:00 PM" onclick="showCTFGamePopup('Jan 13','Practice','Everyone · Big Pitch · 3:00–4:00 PM')">13<span>Practice</span></div>
+          <div class="cal-day">14</div><div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day">19</div>
+          <div class="cal-day prac" title="Practice — Everyone · Big Pitch · 3:00–4:00 PM" onclick="showCTFGamePopup('Jan 20','Practice','Everyone · Big Pitch · 3:00–4:00 PM')">20<span>Practice</span></div>
+          <div class="cal-day">21</div><div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div>
+          <div class="cal-day prac" title="Practice — Everyone · Big Pitch · 3:00–4:00 PM" onclick="showCTFGamePopup('Jan 27','Practice','Everyone · Big Pitch · 3:00–4:00 PM')">27<span>Practice</span></div>
+          <div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div><div class="cal-day">31</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+      </div>
+
+      <!-- FEBRUARY 2027 -->
+      <div id="ctf-feb" class="cal-month" style="display:none;">
+        <div class="cal-month-title">February 2027</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div>
+          <div class="cal-day">1</div><div class="cal-day">2</div>
+          <div class="cal-day prac" title="Practice — Everyone · Big Pitch · 3:00–4:00 PM" onclick="showCTFGamePopup('Feb 3','Practice','Everyone · Big Pitch · 3:00–4:00 PM')">3<span>Practice</span></div>
+          <div class="cal-day">4</div><div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day">7</div><div class="cal-day">8</div><div class="cal-day">9</div>
+          <div class="cal-day prac" title="Practice — Everyone · Big Pitch · 3:00–4:00 PM" onclick="showCTFGamePopup('Feb 10','Practice','Everyone · Big Pitch · 3:00–4:00 PM')">10<span>Practice</span></div>
+          <div class="cal-day">11</div><div class="cal-day">12</div><div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div><div class="cal-day">16</div>
+          <div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div><div class="cal-day">22</div><div class="cal-day">23</div>
+          <div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+      </div>
+
+      <!-- MAY 2027 -->
+      <div id="ctf-may" class="cal-month" style="display:none;">
+        <div class="cal-month-title">May 2027</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+          <div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day">4</div><div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day">7</div><div class="cal-day">8</div>
+          <div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day">11</div><div class="cal-day">12</div><div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div>
+          <div class="cal-day">16</div><div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div>
+          <div class="cal-day game-gaac" onclick="showCTFGamePopup('May 22','JEAC Track &amp; Field Meet','Schedule TBC · @ DAS (Dubai) · Schools attending: GAA, ACS, AISA, ASD, DAA, DAS')">22<span>JEAC<br>MEET</span></div>
+          <div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div><div class="cal-day">29</div>
+          <div class="cal-day">30</div><div class="cal-day">31</div>
+          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
+        </div>
+        <p class="cal-break-note">🏆 The JEAC Track &amp; Field jamboree falls in the Spring term calendar window, but registration and practices begin during Winter — included here for full-season visibility.</p>
+      </div>
+
+      <!-- Game Detail Popup (shown on cell click) -->
+      <div id="ctf-game-popup" class="game-popup">
+        <button class="game-popup-close" onclick="document.getElementById('ctf-game-popup').classList.remove('visible')" aria-label="Close">✕ close</button>
+        <div class="game-popup-title">🔴 <span id="ctf-gp-title"></span></div>
+        <div class="game-popup-rows">
+          <div class="game-popup-row">🏃 <strong>Details:</strong> <span id="ctf-gp-details"></span></div>
+        </div>
+      </div>
+
+      <!-- Event Summary -->
+      <div class="game-summary">
+        <h3>🔴 Key Dates — 2026-2027</h3>
+        <div class="game-list">
+          <div class="game-item">
+            <div class="game-date">Nov<br>2-15</div>
+            <div class="game-details">
+              <strong>Registration Window</strong>
+              <div class="teams">
+                <div class="team-row">🏃 Grades 4-6 · Online sign-up (Spring ASA Registration)</div>
+              </div>
+            </div>
+          </div>
+          <div class="game-item" style="border-left-color:#0f766e;">
+            <div class="game-date" style="color:#0f766e;">Weekly<br>Wed</div>
+            <div class="game-details">
+              <strong>Practices</strong>
+              <div class="teams">
+                <div class="team-row">🏃 Nov 25 · Dec 9 · Jan 6, 13, 20, 27 · Feb 3, 10 — Big Pitch · 3:00–4:00 PM</div>
+              </div>
+            </div>
+          </div>
+          <div class="game-item" style="border-left-color:#1a237e;">
+            <div class="game-date" style="color:#1a237e;">May<br>22</div>
+            <div class="game-details">
+              <strong>JEAC Track &amp; Field Meet</strong>
+              <div class="teams">
+                <div class="team-row">🏆 <strong>@ DAS</strong>, Dubai · Schedule TBC · Schools: GAA, ACS, AISA, ASD, DAA, DAS</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer / Download -->
+      <div class="sched-footer">
+        <a href="schedules/Cubs_Track_Field_2026-27.pdf" class="btn-schedule" download style="text-decoration:none;">📄 Download Full Schedule PDF</a>
+      </div>
+
+    </div><!-- /.sched-inner -->
+  </div><!-- /#cubs-tf-modal -->
+
+  <script>
+    function showCTFMonth(monthId, btn) {
+      ['ctf-nov','ctf-dec','ctf-jan','ctf-feb','ctf-may'].forEach(function(m) {
+        document.getElementById(m).style.display = m === monthId ? '' : 'none';
+      });
+      document.querySelectorAll('#cubs-tf-modal .cal-tab').forEach(function(t) { t.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('ctf-game-popup').classList.remove('visible');
+    }
+    function showCTFGamePopup(date, label, details) {
+      var p = document.getElementById('ctf-game-popup');
+      document.getElementById('ctf-gp-title').textContent = date + ' · ' + label;
+      document.getElementById('ctf-gp-details').textContent = details;
+      p.classList.add('visible');
+      p.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    document.getElementById('cubs-tf-modal').addEventListener('click', function(e) {
+      if (e.target === this) this.classList.remove('open');
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.getElementById('cubs-tf-modal').classList.remove('open');
+      }
+    });
+  </script>
 
 </body>
 </html>
