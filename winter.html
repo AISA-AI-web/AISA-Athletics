@@ -2331,7 +2331,6 @@
         <button class="cal-tab" role="tab" onclick="showCTFMonth('ctf-dec',this)">❄️ Dec 2026</button>
         <button class="cal-tab" role="tab" onclick="showCTFMonth('ctf-jan',this)">🏃 Jan 2027</button>
         <button class="cal-tab" role="tab" onclick="showCTFMonth('ctf-feb',this)">🏃 Feb 2027</button>
-        <button class="cal-tab" role="tab" onclick="showCTFMonth('ctf-may',this)">🏆 May 2027</button>
       </div>
 
       <!-- NOVEMBER 2026 -->
@@ -2392,7 +2391,9 @@
           <div class="cal-day prac" title="Practice — Everyone · Big Pitch · 3:00–4:00 PM" onclick="showCTFGamePopup('Jan 13','Practice','Everyone · Big Pitch · 3:00–4:00 PM')">13<span>Practice</span></div>
           <div class="cal-day">14</div><div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day">19</div>
           <div class="cal-day prac" title="Practice — Everyone · Big Pitch · 3:00–4:00 PM" onclick="showCTFGamePopup('Jan 20','Practice','Everyone · Big Pitch · 3:00–4:00 PM')">20<span>Practice</span></div>
-          <div class="cal-day">21</div><div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div>
+          <div class="cal-day">21</div><div class="cal-day">22</div>
+          <div class="cal-day game-gaac" onclick="showCTFGamePopup('Jan 23','JEAC Track &amp; Field Meet','Schedule TBC · @ DAS (Dubai) · Schools attending: GAA, ACS, AISA, ASD, DAA, DAS')">23<span>JEAC<br>MEET</span></div>
+          <div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div>
           <div class="cal-day prac" title="Practice — Everyone · Big Pitch · 3:00–4:00 PM" onclick="showCTFGamePopup('Jan 27','Practice','Everyone · Big Pitch · 3:00–4:00 PM')">27<span>Practice</span></div>
           <div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div><div class="cal-day">31</div>
           <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
@@ -2414,23 +2415,6 @@
           <div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div>
           <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
         </div>
-      </div>
-
-      <!-- MAY 2027 -->
-      <div id="ctf-may" class="cal-month" style="display:none;">
-        <div class="cal-month-title">May 2027</div>
-        <div class="cal-grid">
-          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
-          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
-          <div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day">4</div><div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day">7</div><div class="cal-day">8</div>
-          <div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day">11</div><div class="cal-day">12</div><div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div>
-          <div class="cal-day">16</div><div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div>
-          <div class="cal-day game-gaac" onclick="showCTFGamePopup('May 22','JEAC Track &amp; Field Meet','Schedule TBC · @ DAS (Dubai) · Schools attending: GAA, ACS, AISA, ASD, DAA, DAS')">22<span>JEAC<br>MEET</span></div>
-          <div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div><div class="cal-day">29</div>
-          <div class="cal-day">30</div><div class="cal-day">31</div>
-          <div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div><div class="cal-empty"></div>
-        </div>
-        <p class="cal-break-note">🏆 The JEAC Track &amp; Field jamboree falls in the Spring term calendar window, but registration and practices begin during Winter — included here for full-season visibility.</p>
       </div>
 
       <!-- Game Detail Popup (shown on cell click) -->
@@ -2465,7 +2449,7 @@
             </div>
           </div>
           <div class="game-item" style="border-left-color:#1a237e;">
-            <div class="game-date" style="color:#1a237e;">May<br>22</div>
+            <div class="game-date" style="color:#1a237e;">Jan<br>23</div>
             <div class="game-details">
               <strong>JEAC Track &amp; Field Meet</strong>
               <div class="teams">
@@ -2486,7 +2470,7 @@
 
   <script>
     function showCTFMonth(monthId, btn) {
-      ['ctf-nov','ctf-dec','ctf-jan','ctf-feb','ctf-may'].forEach(function(m) {
+      ['ctf-nov','ctf-dec','ctf-jan','ctf-feb'].forEach(function(m) {
         document.getElementById(m).style.display = m === monthId ? '' : 'none';
       });
       document.querySelectorAll('#cubs-tf-modal .cal-tab').forEach(function(t) { t.classList.remove('active'); });
