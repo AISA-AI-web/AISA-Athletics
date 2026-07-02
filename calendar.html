@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Master Calendar — AISA Lions Athletics</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Calendar page layout ── */
+    .cal-page {
+      display: flex;
+      gap: 1.5rem;
+      max-width: 1400px;
+      margin: 1.5rem auto 3rem;
+      padding: 0 1rem;
+      align-items: flex-start;
+    }
+
+    /* ── Sidebar ── */
+    .cal-sidebar {
+      width: 280px;
+      flex-shrink: 0;
+      background: #fff;
+      border: 1px solid #dde3ec;
+      border-radius: 10px;
+      padding: 1.25rem;
+      position: sticky;
+      top: 1rem;
+    }
+    .cal-sidebar h2 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--navy);
+      margin: 0 0 .75rem;
+    }
+    .sidebar-actions {
+      display: flex;
+      gap: .5rem;
+      margin-bottom: 1rem;
+    }
+    .sidebar-actions button {
+      flex: 1;
+      font-size: .75rem;
+      padding: .3rem .4rem;
+      border: 1px solid #ccd3df;
+      border-radius: 5px;
+      background: #f0f3f8;
+      color: var(--navy);
+      cursor: pointer;
+    }
+    .sidebar-actions button:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
+
+    .filter-group { margin-bottom: 1rem; }
+    .filter-group-label {
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: #6b7a99;
+      margin-bottom: .4rem;
+    }
+    .filter-item {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .22rem 0;
+      font-size: .82rem;
+      color: #1a2a42;
+    }
+    .filter-item input[type="checkbox"] { display: none; }
+    .filter-dot {
+      width: 13px; height: 13px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: transform .15s;
+    }
+    .filter-item.checked .filter-dot { border-color: #fff; box-shadow: 0 0 0 2px var(--dot-color); }
+    .filter-item:not(.checked) .filter-dot { opacity: .4; }
+    .filter-item label { cursor: pointer; user-select: none; }
+    .filter-item.locked label { cursor: default; color: #888; font-style: italic; }
+
+    /* ── Main calendar area ── */
+    .cal-main { flex: 1; min-width: 0; }
+
+    .cal-nav {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1rem;
+    }
+    .cal-nav button {
+      background: var(--navy);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      width: 34px; height: 34px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cal-nav button:hover { background: var(--gold); }
+    .cal-nav h2 {
+      flex: 1;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 0;
+    }
+    .cal-nav select {
+      font-size: .82rem;
+      padding: .3rem .5rem;
+      border: 1px solid #ccd3df;
+      border-radius: 6px;
+      background: #fff;
+      color: var(--navy);
+      cursor: pointer;
+    }
+
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+      background: #dde3ec;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .cal-dow {
+      background: var(--navy);
+      color: #fff;
+      text-align: center;
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding: .45rem 0;
+    }
+    .cal-cell {
+      background: #fff;
+      min-height: 110px;
+      padding: .35rem .4rem .4rem;
+      vertical-align: top;
+      position: relative;
+      overflow: hidden;
+    }
+    .cal-cell.empty { background: #f4f6fa; }
+    .cal-cell.other-month { background: #f9fafc; }
+
+    .cal-cell.today .day-num {
+      background: var(--gold);
+      color: #fff;
+      border-radius: 50%;
+      width: 24px; height: 24px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .day-num {
+      font-size: .8rem;
+      font-weight: 700;
+      color: #334;
+      margin-bottom: .25rem;
+      width: 24px; height: 24px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .day-num.holiday-num::after {
+      content: '';
+      display: block;
+      width: 6px; height: 6px;
+      background: #d4a017;
+      border-radius: 50%;
+      position: absolute;
+      top: .35rem; right: .4rem;
+    }
+
+    /* Break banner */
+    .break-banner {
+      background: #e8eaf0;
+      color: #556;
+      font-size: .68rem;
+      font-weight: 600;
+      border-radius: 3px;
+      padding: .15rem .3rem;
+      margin-bottom: .2rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Event pill */
+    .ev-pill {
+      display: flex;
+      align-items: center;
+      gap: .2rem;
+      font-size: .68rem;
+      border-radius: 3px;
+      padding: .18rem .28rem;
+      margin-bottom: .18rem;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      cursor: default;
+      line-height: 1.2;
+    }
+    .ev-pill .pill-emoji { font-size: .72rem; flex-shrink: 0; }
+    .ev-pill .pill-text { overflow: hidden; text-overflow: ellipsis; }
+    .more-pill {
+      font-size: .65rem;
+      color: #556;
+      font-weight: 600;
+      padding: .1rem .28rem;
+      background: #eef1f7;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .more-pill:hover { background: #dde3ec; }
+
+    /* Page hero */
+    .cal-hero {
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, #1a4a72 100%);
+      color: #fff;
+      padding: 1.5rem 1rem 1.2rem;
+      text-align: center;
+    }
+    .cal-hero h1 { margin: 0 0 .3rem; font-size: 1.7rem; font-weight: 800; letter-spacing: -.01em; }
+    .cal-hero p { margin: 0; font-size: .9rem; opacity: .8; }
+
+    /* Tooltip popup */
+    .ev-tooltip {
+      position: fixed;
+      z-index: 9999;
+      background: #1a2a42;
+      color: #fff;
+      border-radius: 8px;
+      padding: .7rem .9rem;
+      font-size: .8rem;
+      max-width: 240px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.3);
+      pointer-events: none;
+      display: none;
+      line-height: 1.5;
+    }
+    .ev-tooltip strong { display: block; margin-bottom: .2rem; font-size: .85rem; }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      .cal-page { flex-direction: column; }
+      .cal-sidebar { width: 100%; position: static; }
+      .cal-cell { min-height: 70px; }
+    }
+    @media (max-width: 480px) {
+      .cal-cell { min-height: 55px; padding: .2rem; }
+      .ev-pill { font-size: .6rem; }
+      .day-num { font-size: .72rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <img src="AISAOfficalLogo.png" alt="AISA Official Logo" class="official-logo" />
+      <span class="school-name">American International School of Abu Dhabi</span>
+      <span class="top-bar-tagline">Developing resilient learners and compassionate leaders for a dynamic world</span>
+    </div>
+  </div>
+  <nav class="main-nav" aria-label="Primary">
+    <div class="main-nav-inner">
+      <a href="index.html" class="lions-brand">
+        <img src="GAAC%20Logos(WebsiteVersion)/AISA/AISALionsLogo%20%20copy.png" alt="AISA Lions Athletics" />
+      </a>
+      <input type="checkbox" id="nav-toggle-checkbox" />
+      <label for="nav-toggle-checkbox" class="nav-toggle">☰</label>
+      <ul class="nav-links">
+        <li><a href="purpose.html">About &amp; Teams</a></li>
+        <li><a href="conferences.html">Conferences</a></li>
+        <li><a href="autumn.html">Autumn</a></li>
+        <li><a href="winter.html">Winter</a></li>
+        <li><a href="spring.html">Spring</a></li>
+        <li><a href="opportunities.html">Opportunities</a></li>
+        <li><a href="calendar.html" class="active">📅 Calendar</a></li>
+        <li><a href="handbook.html">Handbook</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<section class="cal-hero">
+  <h1>📅 Master Athletics Calendar</h1>
+  <p>All sports · All divisions · Every practice, game, and event</p>
+</section>
+
+<div class="cal-page">
+  <!-- Sidebar -->
+  <aside class="cal-sidebar" id="cal-sidebar">
+    <h2>Filter by Sport</h2>
+    <div class="sidebar-actions">
+      <button id="btn-select-all">Select All</button>
+      <button id="btn-clear-all">Clear All</button>
+    </div>
+
+    <div class="filter-group">
+      <div class="filter-group-label">🍂 Autumn</div>
+      <div class="filter-item" data-key="hs-boys-vb">
+        <input type="checkbox" id="f-hs-boys-vb" />
+        <span class="filter-dot" style="background:#7d1e10; --dot-color:#7d1e10;"></span>
+        <label for="f-hs-boys-vb">HS Boys Volleyball</label>
+      </div>
+      <div class="filter-item" data-key="hs-girls-vb">
+        <input type="checkbox" id="f-hs-girls-vb" />
+        <span class="filter-dot" style="background:#9d174d; --dot-color:#9d174d;"></span>
+        <label for="f-hs-girls-vb">HS Girls Volleyball</label>
+      </div>
+      <div class="filter-item" data-key="ms-blue-vb">
+        <input type="checkbox" id="f-ms-blue-vb" />
+        <span class="filter-dot" style="background:#1e3a8a; --dot-color:#1e3a8a;"></span>
+        <label for="f-ms-blue-vb">MS Blue Volleyball</label>
+      </div>
+      <div class="filter-item" data-key="ms-yellow-vb">
+        <input type="checkbox" id="f-ms-yellow-vb" />
+        <span class="filter-dot" style="background:#92400e; --dot-color:#92400e;"></span>
+        <label for="f-ms-yellow-vb">MS Yellow Volleyball</label>
+      </div>
+      <div class="filter-item" data-key="cubs-soccer">
+        <input type="checkbox" id="f-cubs-soccer" />
+        <span class="filter-dot" style="background:#145a32; --dot-color:#145a32;"></span>
+        <label for="f-cubs-soccer">Cubs Soccer</label>
+      </div>
+      <div class="filter-item" data-key="hs-swim">
+        <input type="checkbox" id="f-hs-swim" />
+        <span class="filter-dot" style="background:#0d5c8a; --dot-color:#0d5c8a;"></span>
+        <label for="f-hs-swim">HS Swimming</label>
+      </div>
+      <div class="filter-item" data-key="ms-swim">
+        <input type="checkbox" id="f-ms-swim" />
+        <span class="filter-dot" style="background:#1abc9c; --dot-color:#1abc9c;"></span>
+        <label for="f-ms-swim">MS Swimming</label>
+      </div>
+      <div class="filter-item" data-key="cubs-swim">
+        <input type="checkbox" id="f-cubs-swim" />
+        <span class="filter-dot" style="background:#0e7490; --dot-color:#0e7490;"></span>
+        <label for="f-cubs-swim">Cubs Swimming</label>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <div class="filter-group-label">❄️ Winter</div>
+      <div class="filter-item" data-key="hs-boys-bb">
+        <input type="checkbox" id="f-hs-boys-bb" />
+        <span class="filter-dot" style="background:#1a4a72; --dot-color:#1a4a72;"></span>
+        <label for="f-hs-boys-bb">HS Boys Basketball</label>
+      </div>
+      <div class="filter-item" data-key="hs-girls-bb">
+        <input type="checkbox" id="f-hs-girls-bb" />
+        <span class="filter-dot" style="background:#6b21a8; --dot-color:#6b21a8;"></span>
+        <label for="f-hs-girls-bb">HS Girls Basketball</label>
+      </div>
+      <div class="filter-item" data-key="ms-yellow-bb">
+        <input type="checkbox" id="f-ms-yellow-bb" />
+        <span class="filter-dot" style="background:#0f766e; --dot-color:#0f766e;"></span>
+        <label for="f-ms-yellow-bb">MS Yellow Basketball</label>
+      </div>
+      <div class="filter-item" data-key="ms-blue-bb">
+        <input type="checkbox" id="f-ms-blue-bb" />
+        <span class="filter-dot" style="background:#1e40af; --dot-color:#1e40af;"></span>
+        <label for="f-ms-blue-bb">MS Blue Basketball</label>
+      </div>
+      <div class="filter-item" data-key="hs-boys-fb">
+        <input type="checkbox" id="f-hs-boys-fb" />
+        <span class="filter-dot" style="background:#7c2d12; --dot-color:#7c2d12;"></span>
+        <label for="f-hs-boys-fb">HS Boys Football</label>
+      </div>
+      <div class="filter-item" data-key="hs-girls-fb">
+        <input type="checkbox" id="f-hs-girls-fb" />
+        <span class="filter-dot" style="background:#1a3a5c; --dot-color:#1a3a5c;"></span>
+        <label for="f-hs-girls-fb">HS Girls Football</label>
+      </div>
+      <div class="filter-item" data-key="ms-blue-fb">
+        <input type="checkbox" id="f-ms-blue-fb" />
+        <span class="filter-dot" style="background:#1e3a8a; --dot-color:#1e3a8a;"></span>
+        <label for="f-ms-blue-fb">MS Blue Football</label>
+      </div>
+      <div class="filter-item" data-key="ms-yellow-fb">
+        <input type="checkbox" id="f-ms-yellow-fb" />
+        <span class="filter-dot" style="background:#b45309; --dot-color:#b45309;"></span>
+        <label for="f-ms-yellow-fb">MS Yellow Football</label>
+      </div>
+      <div class="filter-item" data-key="cubs-tf">
+        <input type="checkbox" id="f-cubs-tf" />
+        <span class="filter-dot" style="background:#6c1a6c; --dot-color:#6c1a6c;"></span>
+        <label for="f-cubs-tf">Cubs Track &amp; Field</label>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <div class="filter-group-label">📌 Always Shown</div>
+      <div class="filter-item checked locked" data-key="school-calendar">
+        <input type="checkbox" id="f-school-calendar" checked disabled />
+        <span class="filter-dot" style="background:#374151; --dot-color:#374151;"></span>
+        <label for="f-school-calendar">School Calendar</label>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main calendar -->
+  <main class="cal-main">
+    <div class="cal-nav">
+      <button id="btn-prev" aria-label="Previous month">&#8249;</button>
+      <h2 id="cal-month-title">Month Year</h2>
+      <select id="cal-jump" aria-label="Jump to month"></select>
+      <button id="btn-next" aria-label="Next month">&#8250;</button>
+    </div>
+    <div class="cal-grid" id="cal-grid">
+      <!-- Filled by JS -->
+    </div>
+  </main>
+</div>
+
+<div class="ev-tooltip" id="ev-tooltip"></div>
+
+<footer>
+  <strong>AISA Lions Athletics</strong> — American International School of Abu Dhabi<br>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="purpose.html">About &amp; Teams</a>
+    <a href="conferences.html">Conferences</a>
+    <a href="autumn.html">Autumn</a>
+    <a href="winter.html">Winter</a>
+    <a href="spring.html">Spring</a>
+    <a href="opportunities.html">Opportunities</a>
+    <a href="handbook.html">Handbook</a>
+  </div>
+</footer>
+
+<script src="schedules-data.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  // ── Constants ──────────────────────────────────────────────────────────────
+  const MONTHS = ['January','February','March','April','May','June',
+                  'July','August','September','October','November','December'];
+  const DAYS   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const SEASON_START = { year: 2026, month: 7 };  // August 2026 (0-indexed month)
+  const SEASON_END   = { year: 2027, month: 5 };  // June 2027
+
+  // ── State ──────────────────────────────────────────────────────────────────
+  const today = new Date();
+  let curYear  = today.getFullYear();
+  let curMonth = today.getMonth();
+  // Clamp to season
+  if (curYear < SEASON_START.year || (curYear === SEASON_START.year && curMonth < SEASON_START.month)) {
+    curYear = SEASON_START.year; curMonth = SEASON_START.month;
+  }
+  if (curYear > SEASON_END.year || (curYear === SEASON_END.year && curMonth > SEASON_END.month)) {
+    curYear = SEASON_END.year; curMonth = SEASON_END.month;
+  }
+
+  const checkedKeys = new Set(['school-calendar']);
+
+  // ── Build events map: dateStr -> [events] ─────────────────────────────────
+  const eventsMap = {};
+  (window.AISA_SCHEDULES || []).forEach(ev => {
+    if (!eventsMap[ev.date]) eventsMap[ev.date] = [];
+    eventsMap[ev.date].push(ev);
+  });
+
+  // ── Sidebar interactions ───────────────────────────────────────────────────
+  document.querySelectorAll('.filter-item[data-key]').forEach(item => {
+    const key = item.dataset.key;
+    const cb  = item.querySelector('input[type="checkbox"]');
+    const dot = item.querySelector('.filter-dot');
+    if (key === 'school-calendar') {
+      item.classList.add('checked');
+      return;
+    }
+    function sync() {
+      if (cb.checked) {
+        checkedKeys.add(key);
+        item.classList.add('checked');
+      } else {
+        checkedKeys.delete(key);
+        item.classList.remove('checked');
+      }
+      renderCalendar();
+    }
+    cb.addEventListener('change', sync);
+    dot.addEventListener('click', () => { cb.checked = !cb.checked; sync(); });
+    item.querySelector('label').addEventListener('click', () => { cb.checked = !cb.checked; sync(); });
+  });
+
+  document.getElementById('btn-select-all').addEventListener('click', () => {
+    document.querySelectorAll('.filter-item:not(.locked) input[type="checkbox"]').forEach(cb => {
+      cb.checked = true;
+      cb.dispatchEvent(new Event('change'));
+    });
+  });
+  document.getElementById('btn-clear-all').addEventListener('click', () => {
+    document.querySelectorAll('.filter-item:not(.locked) input[type="checkbox"]').forEach(cb => {
+      cb.checked = false;
+      cb.dispatchEvent(new Event('change'));
+    });
+  });
+
+  // ── Jump dropdown ──────────────────────────────────────────────────────────
+  const jumpSel = document.getElementById('cal-jump');
+  let y = SEASON_START.year, m = SEASON_START.month;
+  while (y < SEASON_END.year || (y === SEASON_END.year && m <= SEASON_END.month)) {
+    const opt = document.createElement('option');
+    opt.value = y + '-' + m;
+    opt.textContent = MONTHS[m] + ' ' + y;
+    if (y === curYear && m === curMonth) opt.selected = true;
+    jumpSel.appendChild(opt);
+    m++; if (m > 11) { m = 0; y++; }
+  }
+  jumpSel.addEventListener('change', () => {
+    const [vy, vm] = jumpSel.value.split('-').map(Number);
+    curYear = vy; curMonth = vm;
+    renderCalendar();
+  });
+
+  // ── Nav buttons ────────────────────────────────────────────────────────────
+  document.getElementById('btn-prev').addEventListener('click', () => {
+    if (curYear === SEASON_START.year && curMonth === SEASON_START.month) return;
+    curMonth--; if (curMonth < 0) { curMonth = 11; curYear--; }
+    syncJump(); renderCalendar();
+  });
+  document.getElementById('btn-next').addEventListener('click', () => {
+    if (curYear === SEASON_END.year && curMonth === SEASON_END.month) return;
+    curMonth++; if (curMonth > 11) { curMonth = 0; curYear++; }
+    syncJump(); renderCalendar();
+  });
+  function syncJump() {
+    jumpSel.value = curYear + '-' + curMonth;
+  }
+
+  // ── Tooltip ────────────────────────────────────────────────────────────────
+  const tooltip = document.getElementById('ev-tooltip');
+  document.addEventListener('mousemove', e => {
+    if (tooltip.style.display === 'block') {
+      let x = e.clientX + 14, y2 = e.clientY + 14;
+      if (x + 250 > window.innerWidth) x = e.clientX - 254;
+      if (y2 + 120 > window.innerHeight) y2 = e.clientY - 100;
+      tooltip.style.left = x + 'px';
+      tooltip.style.top  = y2 + 'px';
+    }
+  });
+
+  // ── Render ─────────────────────────────────────────────────────────────────
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function dateStr(y2, m2, d2) { return y2 + '-' + pad(m2 + 1) + '-' + pad(d2); }
+
+  function renderCalendar() {
+    const grid  = document.getElementById('cal-grid');
+    const title = document.getElementById('cal-month-title');
+    title.textContent = MONTHS[curMonth] + ' ' + curYear;
+
+    // Day-of-week headers
+    let html = DAYS.map(d => `<div class="cal-dow">${d}</div>`).join('');
+
+    const firstDay  = new Date(curYear, curMonth, 1).getDay();
+    const daysInMon = new Date(curYear, curMonth + 1, 0).getDate();
+    const daysInPrev = new Date(curYear, curMonth, 0).getDate();
+
+    // Leading empty cells
+    for (let i = 0; i < firstDay; i++) {
+      html += `<div class="cal-cell empty"></div>`;
+    }
+
+    for (let d = 1; d <= daysInMon; d++) {
+      const ds = dateStr(curYear, curMonth, d);
+      const isToday = (curYear === today.getFullYear() && curMonth === today.getMonth() && d === today.getDate());
+      const dayEvents = eventsMap[ds] || [];
+
+      // Filter visible events
+      const visible = dayEvents.filter(ev => checkedKeys.has(ev.sportKey));
+
+      // Check for holiday
+      const holiday = visible.find(ev => ev.type === 'holiday');
+      const isHoliday = !!holiday;
+
+      // Check for break
+      const breakEv = visible.find(ev => ev.type === 'break');
+
+      // Non-break, non-holiday pills
+      const pills = visible.filter(ev => ev.type !== 'break' && ev.type !== 'holiday');
+
+      let cellClass = 'cal-cell';
+      if (isToday) cellClass += ' today';
+
+      let inner = `<div class="day-num${isHoliday ? ' holiday-num' : ''}">${d}</div>`;
+
+      if (breakEv) {
+        inner += `<div class="break-banner">${breakEv.emoji} ${breakEv.description}</div>`;
+      }
+
+      const MAX_PILLS = 3;
+      const shown = pills.slice(0, MAX_PILLS);
+      const extra = pills.length - MAX_PILLS;
+
+      shown.forEach(ev => {
+        const label = ev.time ? `${ev.emoji} ${ev.description} · ${ev.time}` : `${ev.emoji} ${ev.description}`;
+        const detail = ev.detail || label;
+        inner += `<div class="ev-pill" style="background:${ev.color};" data-detail="${escHtml(detail)}">
+          <span class="pill-emoji">${ev.emoji}</span>
+          <span class="pill-text">${escHtml(ev.description)}${ev.time ? ' · ' + ev.time : ''}</span>
+        </div>`;
+      });
+      if (extra > 0) {
+        inner += `<div class="more-pill">+${extra} more</div>`;
+      }
+
+      html += `<div class="${cellClass}">${inner}</div>`;
+    }
+
+    // Trailing empty cells to complete grid
+    const totalCells = firstDay + daysInMon;
+    const remainder = totalCells % 7;
+    if (remainder !== 0) {
+      for (let i = 0; i < 7 - remainder; i++) {
+        html += `<div class="cal-cell empty"></div>`;
+      }
+    }
+
+    grid.innerHTML = html;
+
+    // Attach tooltip events
+    grid.querySelectorAll('.ev-pill[data-detail]').forEach(pill => {
+      pill.addEventListener('mouseenter', e => {
+        tooltip.innerHTML = `<strong>${pill.dataset.detail}</strong>`;
+        tooltip.style.display = 'block';
+      });
+      pill.addEventListener('mouseleave', () => {
+        tooltip.style.display = 'none';
+      });
+    });
+  }
+
+  function escHtml(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  // Initial render
+  renderCalendar();
+})();
+</script>
+</body>
+</html>
