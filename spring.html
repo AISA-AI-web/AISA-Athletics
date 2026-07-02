@@ -346,6 +346,10 @@
             </div>
             <br>
             <small style="color:var(--gray-600);">Conferences: GAAC · ISAC · EAC</small>
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem;">
+              <button class="btn-schedule" style="background:#145a32;color:#fff;" onclick="document.getElementById('hs-tf-modal').classList.add('open')">📅 HS Track &amp; Field Schedule</button>
+              <button class="btn-schedule" style="background:#27ae60;color:#fff;" onclick="document.getElementById('ms-tf-modal').classList.add('open')">📅 MS Track &amp; Field Schedule</button>
+            </div>
           </div>
         </div>
 
@@ -1096,5 +1100,403 @@
       }
     });
   </script>
+
+  <div id="hs-tf-modal" class="sched-modal" role="dialog" aria-modal="true" aria-label="HS Track &amp; Field Schedule">
+    <div class="sched-inner">
+      <div class="sched-header">
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <span style="font-size:1.8rem;line-height:1;">🏃</span>
+          <div>
+            <h2>HS Track &amp; Field</h2>
+            <p>2026–2027 · ISAC Invite &amp; GAAC Tournament (JV &amp; Varsity)</p>
+          </div>
+        </div>
+        <button class="sched-close" onclick="document.getElementById('hs-tf-modal').classList.remove('open')" aria-label="Close">✕</button>
+      </div>
+      <div class="cal-legend">
+        <span><span class="cal-dot reg"></span>Registration</span>
+        <span><span class="cal-dot try"></span>Tryouts</span>
+        <span><span class="cal-dot prac"></span>Practice</span>
+        <span><span class="cal-dot game"></span>ISAC Invite</span>
+        <span><span class="cal-dot game-gaac"></span>GAAC Tournament</span>
+        <span><span class="cal-dot brk"></span>Spring Break</span>
+      </div>
+      <div class="cal-tabs" role="tablist">
+        <button class="cal-tab active" role="tab" onclick="showHSTFMonth('hstf-feb',this)">💫 Feb 2027</button>
+        <button class="cal-tab" role="tab" onclick="showHSTFMonth('hstf-mar',this)">🌷 Mar 2027</button>
+        <button class="cal-tab" role="tab" onclick="showHSTFMonth('hstf-apr',this)">🏆 Apr 2027</button>
+      </div>
+      <div id="hstf-feb" class="cal-month">
+        <div class="cal-month-title">February 2027</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div>
+          <div class="cal-day">1</div>
+          <div class="cal-day">2</div>
+          <div class="cal-day">3</div>
+          <div class="cal-day">4</div>
+          <div class="cal-day">5</div>
+          <div class="cal-day">6</div>
+          <div class="cal-day">7</div>
+          <div class="cal-day">8</div>
+          <div class="cal-day">9</div>
+          <div class="cal-day">10</div>
+          <div class="cal-day">11</div>
+          <div class="cal-day">12</div>
+          <div class="cal-day">13</div>
+          <div class="cal-day">14</div>
+          <div class="cal-day reg" title="Registration — HS Track & Field · Online · Both Genders">15<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration — HS Track & Field · Online · Both Genders">16<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration — HS Track & Field · Online · Both Genders">17<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration — HS Track & Field · Online · Both Genders">18<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration — HS Track & Field · Online · Both Genders">19<span>Reg</span></div>
+          <div class="cal-day">20</div>
+          <div class="cal-day">21</div>
+          <div class="cal-day">22</div>
+          <div class="cal-day try" title="Tryouts — JV & Varsity · Big Pitch · 1:45–3:00 PM">23<span>Tryouts<br>1:45–3:00</span></div>
+          <div class="cal-day try" title="Tryouts — JV & Varsity · Big Pitch · 1:45–3:00 PM">24<span>Tryouts<br>1:45–3:00</span></div>
+          <div class="cal-day try" title="Tryouts — JV & Varsity · Big Pitch · 1:45–3:00 PM">25<span>Tryouts<br>1:45–3:00</span></div>
+          <div class="cal-day try" title="Tryouts — JV & Varsity · Big Pitch · 11:40 AM–1:10 PM">26<span>Tryouts<br>11:40–1:10</span></div>
+          <div class="cal-day">27</div>
+          <div class="cal-day">28</div>
+          <div class="cal-empty"></div>
+          <div class="cal-empty"></div>
+          <div class="cal-empty"></div>
+          <div class="cal-empty"></div>
+          <div class="cal-empty"></div>
+          <div class="cal-empty"></div>
+        </div>
+      </div>
+      <div id="hstf-mar" class="cal-month" style="display:none;">
+        <div class="cal-month-title">March 2027</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div>
+          <div class="cal-day">1</div>
+          <div class="cal-day prac" title="Practice — JV & Varsity · Big Pitch · 1:45–3:00 PM">2<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day prac" title="Practice — JV & Varsity · Big Pitch · 1:45–3:00 PM">3<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day prac" title="Practice — JV & Varsity · Big Pitch · 1:45–3:00 PM">4<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day">5</div>
+          <div class="cal-day">6</div>
+          <div class="cal-day">7</div>
+          <div class="cal-day">8</div>
+          <div class="cal-day prac" title="Practice — JV & Varsity · Big Pitch · 1:45–3:00 PM">9<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day prac" title="Practice — JV & Varsity · Big Pitch · 1:45–3:00 PM">10<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day prac" title="Practice — JV & Varsity · Big Pitch · 1:45–3:00 PM">11<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day">12</div>
+          <div class="cal-day">13</div>
+          <div class="cal-day">14</div>
+          <div class="cal-day">15</div>
+          <div class="cal-day prac" title="Practice — JV & Varsity · Big Pitch · 1:45–3:00 PM">16<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day prac" title="Practice — JV & Varsity · Big Pitch · 1:45–3:00 PM">17<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day prac" title="Practice — JV & Varsity · Big Pitch · 1:45–3:00 PM">18<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day">19</div>
+          <div class="cal-day game" onclick="showHSTFPopup('Mar 20','ISAC Track Invite','@ DAS (Dubai) · Schedule TBC · Bus TBC · Schools: GAA, AISA, CIS, DAS')">20<span>ISAC<br>INVITE</span></div>
+          <div class="cal-day">21</div>
+          <div class="cal-day">22</div>
+          <div class="cal-day prac" title="Practice — JV & Varsity · Big Pitch · 1:45–3:00 PM">23<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day prac" title="Practice — JV & Varsity · Big Pitch · 1:45–3:00 PM">24<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day prac" title="Practice — JV & Varsity · Big Pitch · 1:45–3:00 PM">25<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day">26</div>
+          <div class="cal-day">27</div>
+          <div class="cal-day">28</div>
+          <div class="cal-day">29</div>
+          <div class="cal-day prac" title="Practice — JV & Varsity · Big Pitch · 1:45–3:00 PM">30<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day prac" title="Practice — JV & Varsity · Big Pitch · 1:45–3:00 PM">31<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-empty"></div>
+          <div class="cal-empty"></div>
+          <div class="cal-empty"></div>
+        </div>
+      </div>
+      <div id="hstf-apr" class="cal-month" style="display:none;">
+        <div class="cal-month-title">April 2027</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div>
+          <div class="cal-empty"></div>
+          <div class="cal-empty"></div>
+          <div class="cal-empty"></div>
+          <div class="cal-day prac" title="Practice — JV & Varsity · Big Pitch · 1:45–3:00 PM">1<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day">2</div>
+          <div class="cal-day brk">3</div>
+          <div class="cal-day brk">4</div>
+          <div class="cal-day brk">5</div>
+          <div class="cal-day brk">6</div>
+          <div class="cal-day brk">7</div>
+          <div class="cal-day brk">8</div>
+          <div class="cal-day brk">9</div>
+          <div class="cal-day brk">10</div>
+          <div class="cal-day brk">11</div>
+          <div class="cal-day">12</div>
+          <div class="cal-day prac" title="Practice — JV & Varsity · Big Pitch · 1:45–3:00 PM">13<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day prac" title="Practice — JV & Varsity · Big Pitch · 1:45–3:00 PM">14<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day prac" title="Practice — JV & Varsity · Big Pitch · 1:45–3:00 PM">15<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day">16</div>
+          <div class="cal-day">17</div>
+          <div class="cal-day">18</div>
+          <div class="cal-day">19</div>
+          <div class="cal-day prac" title="Practice — JV & Varsity · Big Pitch · 1:45–3:00 PM">20<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day">21</div>
+          <div class="cal-day game-gaac" onclick="showHSTFPopup('Apr 22','GAAC Round Robin Day 1','@ TBD · Schedule TBC · Schools: AISA, DAS, ACS, AUS, ISL, UAE, GAAQ, UAS, AISR, ASB')">22<span>GAAC<br>RR Day 1</span></div>
+          <div class="cal-day game-gaac" onclick="showHSTFPopup('Apr 23','GAAC Round Robin Day 2','@ TBD · Schedule TBC · Schools: AISA, DAS, ACS, AUS, ISL, UAE, GAAQ, UAS, AISR, ASB')">23<span>GAAC<br>RR Day 2</span></div>
+          <div class="cal-day game-gaac" onclick="showHSTFPopup('Apr 24','GAAC Final Tournament Day','@ TBD · Schedule TBC · Schools: AISA, DAS, ACS, AUS, ISL, UAE, GAAQ, UAS, AISR, ASB')">24<span>GAAC<br>FINALS</span></div>
+          <div class="cal-day">25</div>
+          <div class="cal-day">26</div>
+          <div class="cal-day">27</div>
+          <div class="cal-day">28</div>
+          <div class="cal-day">29</div>
+          <div class="cal-day">30</div>
+          <div class="cal-empty"></div>
+        </div>
+        <p class="cal-break-note">🌸 Spring Break — Apr 3 through Apr 11. No games or practices.</p>
+      </div>
+      <div id="hstf-game-popup" class="game-popup">
+        <button class="game-popup-close" onclick="document.getElementById('hstf-game-popup').classList.remove('visible')" aria-label="Close">✕ close</button>
+        <div class="game-popup-title">🔴 <span id="hstf-gp-title"></span></div>
+        <div class="game-popup-rows">
+          <div class="game-popup-row">🏃 <strong>Details:</strong> <span id="hstf-gp-detail"></span></div>
+        </div>
+      </div>
+      <div class="game-summary">
+        <h3>🔴 Key Dates — 2026-2027</h3>
+        <div class="game-list">
+          <div class="game-item">
+            <div class="game-date">Feb<br>15-19</div>
+            <div class="game-details"><strong>Registration</strong><div class="teams"><div class="team-row">🏃 JV &amp; Varsity · Online</div></div></div>
+          </div>
+          <div class="game-item" style="border-left-color:#dc2626;">
+            <div class="game-date" style="color:#dc2626;">Mar<br>20</div>
+            <div class="game-details"><strong>ISAC Track Invite</strong><div class="teams"><div class="team-row">🏃 <strong>@ DAS</strong>, Dubai · Schedule TBC · Schools: GAA, AISA, CIS, DAS</div></div></div>
+          </div>
+          <div class="game-item" style="border-left-color:#1a237e;">
+            <div class="game-date" style="color:#1a237e;">Apr<br>22-24</div>
+            <div class="game-details"><strong>GAAC Track &amp; Field Tournament</strong><div class="teams"><div class="team-row">🏆 Location TBD · Round Robin Apr 22-23 · Finals Apr 24 · Schools: AISA, DAS, ACS, AUS, ISL, UAE, GAAQ, UAS, AISR, ASB</div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="sched-footer">
+        <a href="schedules/HS_Track_Field_2026-27.pdf" class="btn-schedule" download style="text-decoration:none;background:#145a32;color:#fff;">📄 Download Full Schedule PDF</a>
+      </div>
+    </div>
+  </div><!-- /#hs-tf-modal -->
+
+  <div id="ms-tf-modal" class="sched-modal" role="dialog" aria-modal="true" aria-label="MS Track &amp; Field Schedule">
+    <div class="sched-inner">
+      <div class="sched-header">
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <span style="font-size:1.8rem;line-height:1;">🏃</span>
+          <div>
+            <h2>MS Track &amp; Field</h2>
+            <p>2026–2027 · EAC Track Meet Exchange</p>
+          </div>
+        </div>
+        <button class="sched-close" onclick="document.getElementById('ms-tf-modal').classList.remove('open')" aria-label="Close">✕</button>
+      </div>
+      <div class="cal-legend">
+        <span><span class="cal-dot reg"></span>Registration</span>
+        <span><span class="cal-dot try"></span>Tryouts</span>
+        <span><span class="cal-dot prac"></span>Practice</span>
+        <span><span class="cal-dot game-eac"></span>EAC Invite</span>
+        <span><span class="cal-dot brk"></span>Spring Break</span>
+      </div>
+      <div class="cal-tabs" role="tablist">
+        <button class="cal-tab active" role="tab" onclick="showMSTFMonth('mstf-feb',this)">💫 Feb 2027</button>
+        <button class="cal-tab" role="tab" onclick="showMSTFMonth('mstf-mar',this)">🌷 Mar 2027</button>
+        <button class="cal-tab" role="tab" onclick="showMSTFMonth('mstf-apr',this)">🌸 Apr 2027</button>
+      </div>
+      <div id="mstf-feb" class="cal-month">
+        <div class="cal-month-title">February 2027</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div>
+          <div class="cal-day">1</div>
+          <div class="cal-day">2</div>
+          <div class="cal-day">3</div>
+          <div class="cal-day">4</div>
+          <div class="cal-day">5</div>
+          <div class="cal-day">6</div>
+          <div class="cal-day">7</div>
+          <div class="cal-day">8</div>
+          <div class="cal-day">9</div>
+          <div class="cal-day">10</div>
+          <div class="cal-day">11</div>
+          <div class="cal-day">12</div>
+          <div class="cal-day">13</div>
+          <div class="cal-day">14</div>
+          <div class="cal-day reg" title="Registration — MS Track & Field · Online · Both Genders">15<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration — MS Track & Field · Online · Both Genders">16<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration — MS Track & Field · Online · Both Genders">17<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration — MS Track & Field · Online · Both Genders">18<span>Reg</span></div>
+          <div class="cal-day reg" title="Registration — MS Track & Field · Online · Both Genders">19<span>Reg</span></div>
+          <div class="cal-day">20</div>
+          <div class="cal-day">21</div>
+          <div class="cal-day">22</div>
+          <div class="cal-day try" title="Tryouts — MS Track · Big Pitch · 1:45–3:00 PM">23<span>Tryouts<br>1:45–3:00</span></div>
+          <div class="cal-day try" title="Tryouts — MS Track · Big Pitch · 1:45–3:00 PM">24<span>Tryouts<br>1:45–3:00</span></div>
+          <div class="cal-day try" title="Tryouts — MS Track · Big Pitch · 1:45–3:00 PM">25<span>Tryouts<br>1:45–3:00</span></div>
+          <div class="cal-day try" title="Tryouts — MS Track · Big Pitch · 11:40 AM–1:10 PM">26<span>Tryouts<br>11:40–1:10</span></div>
+          <div class="cal-day">27</div>
+          <div class="cal-day">28</div>
+          <div class="cal-empty"></div>
+          <div class="cal-empty"></div>
+          <div class="cal-empty"></div>
+          <div class="cal-empty"></div>
+          <div class="cal-empty"></div>
+          <div class="cal-empty"></div>
+        </div>
+      </div>
+      <div id="mstf-mar" class="cal-month" style="display:none;">
+        <div class="cal-month-title">March 2027</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div>
+          <div class="cal-day">1</div>
+          <div class="cal-day prac" title="Practice — MS Track · Big Pitch · 1:45–3:00 PM">2<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day prac" title="Practice — MS Track · Big Pitch · 1:45–3:00 PM">3<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day prac" title="Practice — MS Track · Big Pitch · 1:45–3:00 PM">4<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day">5</div>
+          <div class="cal-day">6</div>
+          <div class="cal-day">7</div>
+          <div class="cal-day">8</div>
+          <div class="cal-day prac" title="Practice — MS Track · Big Pitch · 1:45–3:00 PM">9<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day prac" title="Practice — MS Track · Big Pitch · 1:45–3:00 PM">10<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day prac" title="Practice — MS Track · Big Pitch · 1:45–3:00 PM">11<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day">12</div>
+          <div class="cal-day">13</div>
+          <div class="cal-day">14</div>
+          <div class="cal-day">15</div>
+          <div class="cal-day prac" title="Practice — MS Track · Big Pitch · 1:45–3:00 PM">16<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day prac" title="Practice — MS Track · Big Pitch · 1:45–3:00 PM">17<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day prac" title="Practice — MS Track · Big Pitch · 1:45–3:00 PM">18<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day">19</div>
+          <div class="cal-day game-eac" onclick="showMSTFPopup('Mar 20','EAC Track Meet Exchange','@ DAA (Dubai) · Schedule TBC · Bus TBC · Schools: GAA, ACS, AISA, ASD, DAA, DAS')">20<span>EAC<br>INVITE</span></div>
+          <div class="cal-day">21</div>
+          <div class="cal-day">22</div>
+          <div class="cal-day prac" title="Practice — MS Track · Big Pitch · 1:45–3:00 PM">23<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day prac" title="Practice — MS Track · Big Pitch · 1:45–3:00 PM">24<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day prac" title="Practice — MS Track · Big Pitch · 1:45–3:00 PM">25<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day">26</div>
+          <div class="cal-day">27</div>
+          <div class="cal-day">28</div>
+          <div class="cal-day">29</div>
+          <div class="cal-day prac" title="Practice — MS Track · Big Pitch · 1:45–3:00 PM">30<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day prac" title="Practice — MS Track · Big Pitch · 1:45–3:00 PM">31<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-empty"></div>
+          <div class="cal-empty"></div>
+          <div class="cal-empty"></div>
+        </div>
+      </div>
+      <div id="mstf-apr" class="cal-month" style="display:none;">
+        <div class="cal-month-title">April 2027</div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-empty"></div>
+          <div class="cal-empty"></div>
+          <div class="cal-empty"></div>
+          <div class="cal-empty"></div>
+          <div class="cal-day prac" title="Practice — MS Track · Big Pitch · 1:45–3:00 PM">1<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day">2</div>
+          <div class="cal-day brk">3</div>
+          <div class="cal-day brk">4</div>
+          <div class="cal-day brk">5</div>
+          <div class="cal-day brk">6</div>
+          <div class="cal-day brk">7</div>
+          <div class="cal-day brk">8</div>
+          <div class="cal-day brk">9</div>
+          <div class="cal-day brk">10</div>
+          <div class="cal-day brk">11</div>
+          <div class="cal-day">12</div>
+          <div class="cal-day prac" title="Practice — MS Track · Big Pitch · 1:45–3:00 PM">13<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day prac" title="Practice — MS Track · Big Pitch · 1:45–3:00 PM">14<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day prac" title="Practice — MS Track · Big Pitch · 1:45–3:00 PM">15<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day">16</div>
+          <div class="cal-day">17</div>
+          <div class="cal-day">18</div>
+          <div class="cal-day">19</div>
+          <div class="cal-day prac" title="Practice — MS Track · Big Pitch · 1:45–3:00 PM">20<span>Practice<br>1:45–3:00</span></div>
+          <div class="cal-day">21</div>
+          <div class="cal-day">22</div>
+          <div class="cal-day">23</div>
+          <div class="cal-day">24</div>
+          <div class="cal-day">25</div>
+          <div class="cal-day">26</div>
+          <div class="cal-day">27</div>
+          <div class="cal-day">28</div>
+          <div class="cal-day">29</div>
+          <div class="cal-day">30</div>
+          <div class="cal-empty"></div>
+        </div>
+        <p class="cal-break-note">🌸 Spring Break — Apr 3 through Apr 11. No games or practices.</p>
+      </div>
+      <div id="mstf-game-popup" class="game-popup">
+        <button class="game-popup-close" onclick="document.getElementById('mstf-game-popup').classList.remove('visible')" aria-label="Close">✕ close</button>
+        <div class="game-popup-title">🔴 <span id="mstf-gp-title"></span></div>
+        <div class="game-popup-rows">
+          <div class="game-popup-row">🏃 <strong>Details:</strong> <span id="mstf-gp-detail"></span></div>
+        </div>
+      </div>
+      <div class="game-summary">
+        <h3>🔴 Key Dates — 2026-2027</h3>
+        <div class="game-list">
+          <div class="game-item">
+            <div class="game-date">Feb<br>15-19</div>
+            <div class="game-details"><strong>Registration</strong><div class="teams"><div class="team-row">🏃 MS Track · Online</div></div></div>
+          </div>
+          <div class="game-item" style="border-left-color:#0f766e;">
+            <div class="game-date" style="color:#0f766e;">Mar<br>20</div>
+            <div class="game-details"><strong>EAC Track Meet Exchange</strong><div class="teams"><div class="team-row">🏃 <strong>@ DAA</strong>, Dubai · Schedule TBC · Schools: GAA, ACS, AISA, ASD, DAA, DAS</div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="sched-footer">
+        <a href="schedules/MS_Track_Field_2026-27.pdf" class="btn-schedule" download style="text-decoration:none;background:#145a32;color:#fff;">📄 Download Full Schedule PDF</a>
+      </div>
+    </div>
+  </div><!-- /#ms-tf-modal -->
+
+  <script>
+    function showHSTFMonth(id, btn) {
+      ['hstf-feb','hstf-mar','hstf-apr'].forEach(function(m) {
+        document.getElementById(m).style.display = m === id ? '' : 'none';
+      });
+      document.querySelectorAll('#hs-tf-modal .cal-tab').forEach(function(t) { t.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('hstf-game-popup').classList.remove('visible');
+    }
+    function showHSTFPopup(date, label, detail) {
+      var p = document.getElementById('hstf-game-popup');
+      document.getElementById('hstf-gp-title').textContent = date + ' · ' + label;
+      document.getElementById('hstf-gp-detail').textContent = detail;
+      p.classList.add('visible');
+      p.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    function showMSTFMonth(id, btn) {
+      ['mstf-feb','mstf-mar','mstf-apr'].forEach(function(m) {
+        document.getElementById(m).style.display = m === id ? '' : 'none';
+      });
+      document.querySelectorAll('#ms-tf-modal .cal-tab').forEach(function(t) { t.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('mstf-game-popup').classList.remove('visible');
+    }
+    function showMSTFPopup(date, label, detail) {
+      var p = document.getElementById('mstf-game-popup');
+      document.getElementById('mstf-gp-title').textContent = date + ' · ' + label;
+      document.getElementById('mstf-gp-detail').textContent = detail;
+      p.classList.add('visible');
+      p.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    ['hs-tf-modal','ms-tf-modal'].forEach(function(id) {
+      document.getElementById(id).addEventListener('click', function(e) {
+        if (e.target === this) this.classList.remove('open');
+      });
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.getElementById('hs-tf-modal').classList.remove('open');
+        document.getElementById('ms-tf-modal').classList.remove('open');
+      }
+    });
+  </script>
+
 </body>
 </html>
