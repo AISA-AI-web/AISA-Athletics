@@ -80,7 +80,6 @@
     .filter-item.checked .filter-dot { border-color: #fff; box-shadow: 0 0 0 2px var(--dot-color); }
     .filter-item:not(.checked) .filter-dot { opacity: .4; }
     .filter-item label { cursor: pointer; user-select: none; }
-    .filter-item.locked label { cursor: default; color: #888; font-style: italic; }
 
     /* ── Main calendar area ── */
     .cal-main { flex: 1; min-width: 0; }
@@ -424,9 +423,9 @@
     </div>
 
     <div class="filter-group">
-      <div class="filter-group-label">📌 Always Shown</div>
-      <div class="filter-item checked locked" data-key="school-calendar">
-        <input type="checkbox" id="f-school-calendar" checked disabled />
+      <div class="filter-group-label">📌 School</div>
+      <div class="filter-item checked" data-key="school-calendar">
+        <input type="checkbox" id="f-school-calendar" checked />
         <span class="filter-dot" style="background:#374151; --dot-color:#374151;"></span>
         <label for="f-school-calendar">School Calendar</label>
       </div>
@@ -473,7 +472,7 @@
                   'July','August','September','October','November','December'];
   const DAYS   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   const SEASON_START = { year: 2026, month: 7 };  // August 2026 (0-indexed month)
-  const SEASON_END   = { year: 2027, month: 5 };  // June 2027
+  const SEASON_END   = { year: 2027, month: 6 };  // July 2027
 
   // ── State ──────────────────────────────────────────────────────────────────
   const today = new Date();
@@ -501,10 +500,6 @@
     const key = item.dataset.key;
     const cb  = item.querySelector('input[type="checkbox"]');
     const dot = item.querySelector('.filter-dot');
-    if (key === 'school-calendar') {
-      item.classList.add('checked');
-      return;
-    }
     function sync() {
       if (cb.checked) {
         checkedKeys.add(key);
@@ -517,17 +512,16 @@
     }
     cb.addEventListener('change', sync);
     dot.addEventListener('click', () => { cb.checked = !cb.checked; sync(); });
-    item.querySelector('label').addEventListener('click', () => { cb.checked = !cb.checked; sync(); });
   });
 
   document.getElementById('btn-select-all').addEventListener('click', () => {
-    document.querySelectorAll('.filter-item:not(.locked) input[type="checkbox"]').forEach(cb => {
+    document.querySelectorAll('.filter-item input[type="checkbox"]').forEach(cb => {
       cb.checked = true;
       cb.dispatchEvent(new Event('change'));
     });
   });
   document.getElementById('btn-clear-all').addEventListener('click', () => {
-    document.querySelectorAll('.filter-item:not(.locked) input[type="checkbox"]').forEach(cb => {
+    document.querySelectorAll('.filter-item input[type="checkbox"]').forEach(cb => {
       cb.checked = false;
       cb.dispatchEvent(new Event('change'));
     });
@@ -613,8 +607,8 @@
       // Check for break
       const breakEv = visible.find(ev => ev.type === 'break');
 
-      // Non-break, non-holiday pills
-      const pills = visible.filter(ev => ev.type !== 'break' && ev.type !== 'holiday');
+      // Non-break pills (holidays still show as a pill, plus a dot marker on the day number)
+      const pills = visible.filter(ev => ev.type !== 'break');
 
       let cellClass = 'cal-cell';
       if (isToday) cellClass += ' today';
